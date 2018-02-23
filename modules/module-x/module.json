@@ -1,0 +1,7 @@
+{
+    "name": "components demonstration",
+    "dynamic": false,
+    "includes": [
+        "components/module.json"
+    ]
+}

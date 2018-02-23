@@ -1,0 +1,6 @@
+<div class="ng-cloak" class="container-fluid" ng-controller="AppLayoutController">
+    <div ng-if="security.canRead(view.index)" class="row application application-title"> 
+        <h2>{{title.name | translate}} - {{locale | translate}}</h2>
+    </div>
+    <div ng-view></div>
+</div>

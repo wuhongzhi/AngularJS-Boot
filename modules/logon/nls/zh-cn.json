@@ -1,0 +1,11 @@
+{
+    "label.auth.wait.timeout": "扫码登录，{0}秒后失效",
+    "label.auth.confirm": "确认登录",
+    "label.auth.logon": "登录",
+    "label.auth.exit": "关闭",
+    "label.auth.user": "用户",
+    "label.auth.password": "密码",
+	"label.logon.dialog.title": "警告",
+	"label.logon.dialog.failed": "无效的用户或密码",
+	"label.button.ok": "确定"
+}

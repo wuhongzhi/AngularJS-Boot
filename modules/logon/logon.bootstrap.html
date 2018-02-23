@@ -1,0 +1,32 @@
+<div class="container" ng-controller="AppAuthenticateController" class="application-title" ng-class="login_class">
+  <div class="row" ng-if="!device.mobile">
+    <div class="col-12 text-center">
+        <div ng-qrcode ng-model="qrcode" ng-brand="/favicon.ico"></div>
+    </div>    
+  </div>  
+  <div class="row" ng-if="!device.mobile">
+    <div class="col-xs-12 text-center">
+        <span>
+            {{'label.auth.wait.timeout' | translate:timeout}}
+        </span>
+    </div>
+  </div>  
+  <div class="row" ng-if="device.mobile">
+    <div class="col-12 text-center">
+            {{'label.auth.user' | translate}} <input type="text" ng-model="auth_data.user"/>
+    </div>    
+  </div>  
+  <div class="row" ng-if="device.mobile">
+    <div class="col-xs-12 text-center">
+        <span>
+            {{'label.auth.password' | translate}} <input type="password" ng-model="auth_data.password"/>
+        </span>
+    </div>
+  </div>  
+  <div class="row" ng-if="device.mobile">
+    <div class="col-xs-12 text-center">
+        <input type="button" ng-click="signOn()" value="{{'label.auth.logon' | translate}}"/>
+        <input ng-if="shutdown" type="button" ng-click="shutdown()" value="{{'label.auth.exit' | translate}}"/>
+    </div>
+  </div>  
+</div>

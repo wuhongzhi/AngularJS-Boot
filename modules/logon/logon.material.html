@@ -1,0 +1,49 @@
+<div layout="column" layout-align="space-around center" ng-controller="AppAuthenticateController" ng-class="login_class">
+    <div ng-if="!device.mobile" class="application-title" >
+        <div ng-qrcode ng-model="qrcode" ng-brand="/favicon.ico"></div>
+    </div>
+    <div ng-if="loading && !device.mobile" class="login-timer">
+        <div layout="column" layout-align="space-around center">
+            <span>
+                {{'label.auth.wait.timeout' | translate:timeout}}
+            </span>
+        </div>
+    </div>
+    <div ng-if="device.mobile">
+        <form name="logonForm">
+            <div layout="column" layout-align="space-around center">
+                <md-input-container>
+                    <label>{{'label.auth.user' | translate}}</label>
+                    <input name="user" ng-model="auth_data.user" required ng-minlength="8" ng-maxlength="20">
+                    <div ng-messages="logonForm.user.$error">
+                        <div ng-message="required">{{'label.field.message.required' | translate}}</div>
+                        <div ng-message="minlength">{{'label.field.message.minlength' | translate:8}}</div>
+                        <div ng-message="maxlength">{{'label.field.message.maxlength' | translate:20}}</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>{{'label.auth.password' | translate}}</label>
+                    <input name="password" ng-model="auth_data.password" type="password" required ng-minlength="8" ng-maxlength="20">
+                    <div ng-messages="logonForm.password.$error">
+                        <div ng-message="required">{{'label.field.message.required' | translate}}</div>
+                        <div ng-message="minlength">{{'label.field.message.minlength' | translate:8}}</div>
+                        <div ng-message="maxlength">{{'label.field.message.maxlength' | translate:20}}</div>
+                    </div>
+                </md-input-container>
+                <div layout="row" layout-align="space-around center">
+                    <md-input-container>
+                        <md-button ng-disabled="!logonForm.$valid" ng-click="signOn()" class="md-raised md-primary">{{'label.auth.logon' | translate}}</md-button>
+                        <md-button ng-if="shutdown" ng-click="shutdown()" class="md-raised">{{'label.auth.exit' | translate}}</md-button>
+                    </md-input-container>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div layout="column" layout-align="space-around center" class="login-language">
+        <md-input-container>
+            <md-select ng-model="title.locale" placeholder="Locale" class="md-no-underline">
+                <md-option ng-value="locale" ng-repeat="locale in title.locales">{{locale | translate}}</md-option>
+            </md-select>
+        </md-input-container>        
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+    "name": "authentication",
+    "safe": true,
+    "dynamic": false,
+    "modules": {
+        "main": {
+            "language": {
+                "en-us": "nls/en-us.json",
+                "zh-cn": "nls/zh-cn.json"
+            },
+            "script": "logon.js",
+            "template": "logon.${theme}.html"
+        },
+        "confirm": {
+            "language": {
+                "en-us": "nls/en-us.json",
+                "zh-cn": "nls/zh-cn.json"
+            },
+            "script": "confirm.js",
+            "template": "confirm.${theme}.html"
+        }
+    }
+}

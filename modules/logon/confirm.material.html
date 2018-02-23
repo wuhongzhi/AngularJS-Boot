@@ -1,0 +1,8 @@
+<div layout="column" layout-align="center center" ng-controller="AppConfirmController" ng-class="'login-confirm'">
+    {{error}}
+    <md-input-container ng-if="!error">
+        <div layout="row" layout-align="space-around center">
+            <md-button ng-click="confirm()" class="md-raised md-warn">{{'label.auth.confirm' | translate}}</md-button>
+        </div>
+    </md-input-container>
+</div>

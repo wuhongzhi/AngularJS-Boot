@@ -1,0 +1,9 @@
+{
+    "label.index.title": "使用`md-autocomplete`去查找本地或远程数据源",
+    "label.index.type" : "没有州和`{0}`相同.",
+    "label.index.hint" : "创建一个新洲!",
+    "label.index.hint.button1": "同步查找",
+    "label.index.hint.button2": "禁止缓冲",
+    "label.index.hint.button3": "禁止输入",
+    "label.index.hints": "默认情况下,`md-autocomplete`将在执行查询时缓存结果。在执行初始调用后, 它将使用缓存的结果来消除不必要的服务器请求或查找逻辑。可以在上面禁用此功能。"
+}

@@ -1,0 +1,8 @@
+{
+    "name": "MODULE 3-1",
+    "modules": {
+        "shared.components": {
+            "script" : "components1.js"
+        }
+    }
+}

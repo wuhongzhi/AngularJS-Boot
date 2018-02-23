@@ -1,0 +1,15 @@
+{
+    "name": "layout",
+    "safe": true,
+    "dynamic": false,
+    "modules": {
+        "main": {
+            "language": {
+                "en-us": "nls/en-us.json",
+                "zh-cn": "nls/zh-cn.json"
+            },
+            "script": "layout.js",
+            "template": "layout-${theme}.html"
+        }
+    }
+}

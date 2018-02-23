@@ -1,0 +1,8 @@
+<div class="container" ng-controller="AppConfirmController" ng-class="'login-confirm'">
+ <div class="row">
+    <div class="col-xs-12 text-center">
+	  	{{error}}
+		<input ng-if="!error" type="button" class="btn btn-primary" ng-click="confirm()" value="{{'label.auth.confirm' | translate}}"/>
+    </div>
+  </div>  
+</div>

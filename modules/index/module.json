@@ -1,0 +1,15 @@
+{
+    "name": "index",
+    "safe": false,
+    "dynamic": true,
+    "modules": {
+        "main": {
+            "language": {
+                "en-us": "nls/en-us.json",
+                "zh-cn": "nls/zh-cn.json"
+            },
+            "script": "index.${theme}.js",
+            "template": "index.${theme}.html"
+        }
+    }
+}

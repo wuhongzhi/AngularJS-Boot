@@ -1,0 +1,11 @@
+{
+    "label.auth.wait.timeout": "Sign on by scanning above Qrcode, {0} Secs available",
+    "label.auth.confirm": "Confirm SignOn",
+    "label.auth.logon": "Sign On",
+    "label.auth.exit": "Quit",
+    "label.auth.user": "User",
+    "label.auth.password": "Password",
+	"label.logon.dialog.title": "Logon Alert",
+	"label.logon.dialog.failed": "Invalid user or password",
+	"label.button.ok": "OK"
+}

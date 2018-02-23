@@ -1,0 +1,9 @@
+{
+    "en-us"   : "English",
+    "zh-cn"   : "中文",
+    "application" : "演示程序",
+    "label.home": "主页",
+    "label.field.message.required": "这是必输项",
+    "label.field.message.minlength": "最少{0}个字符",
+    "label.field.message.maxlength": "最多{0}个字符"   
+}

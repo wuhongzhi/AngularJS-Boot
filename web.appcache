@@ -1,0 +1,72 @@
+CACHE MANIFEST
+#version 1.0.3
+CACHE:
+#IMAGE FILES
+/favicon.ico
+/img/background.png
+#CSS FILES
+css/shared/icons/awesome/font-awesome.min.css
+css/themes/bootstrap/bootstrap-theme.min.css
+css/themes/bootstrap/bootstrap.min.css
+css/themes/material/angular-material.min.css
+#FONT FILES
+#css/shared/icons/awesome/fonts/FontAwesome.otf
+#css/shared/icons/awesome/fonts/fontawesome-webfont.woff2
+#css/shared/icons/awesome/fonts/fontawesome-webfont.woff
+#css/shared/icons/awesome/fonts/fontawesome-webfont.ttf
+#css/shared/icons/awesome/fonts/fontawesome-webfont.svg
+#css/shared/icons/awesome/fonts/fontawesome-webfont.eot
+#css/themes/bootstrap/fonts/glyphicons-halflings-regular.woff2
+#css/themes/bootstrap/fonts/glyphicons-halflings-regular.woff
+#css/themes/bootstrap/fonts/glyphicons-halflings-regular.ttf
+#css/themes/bootstrap/fonts/glyphicons-halflings-regular.svg
+#css/themes/bootstrap/fonts/glyphicons-halflings-regular.eot
+#LIBRARY FILES
+lib/angular-bootstrap/ui-bootstrap-tpls.min.js
+lib/angular-material/angular-material.min.js
+lib/angular.js/angular-animate.min.js
+lib/angular.js/angular-aria.min.js
+lib/angular.js/angular-messages.min.js
+lib/angular.js/angular-resource.min.js
+lib/angular.js/angular-route.min.js
+lib/angular.js/angular-sanitize.min.js
+lib/angular.js/angular-touch.min.js
+lib/angular.js/angular.min.js
+lib/angular.js/i18n/angular-locale_en-us.js
+lib/angular.js/i18n/angular-locale_zh-cn.js
+lib/es5-shim/es5-sham.min.js
+lib/es5-shim/es5-shim.min.js
+lib/es6-shim/es6-sham.min.js
+lib/es6-shim/es6-shim.min.js
+lib/qrcode/qrcode.min.js
+lib/jquery/jquery.slim.min.js
+lib/modernizr/modernizr.min.js
+lib/require-plugins/cache.min.js
+lib/require-plugins/css.min.js
+lib/require-plugins/json.min.js
+lib/require-plugins/text.min.js
+lib/require.min.js
+#FRAMEWORK LIBRARY FILES
+#lib/system/bios.min.js
+#lib/system/kernel.min.js
+#lib/system/init.min.js
+#lib/system/modules/system.device.min.js
+#lib/system/modules/system.cache.min.js
+#lib/system/modules/gui.theme.min.js
+#lib/system/modules/gui.qrcode.min.js
+#lib/system/modules/gui.language.min.js
+#lib/system/modules/system.http.min.js
+#lib/system/modules/system.route.min.js
+#lib/system/modules/system.security.min.js
+#lib/system/modules/system.dynamic.min.js
+#lib/system/devices/virtual/device.network.min.js
+#lib/system/modules/gui.qrcode.drawer.min.js
+#lib/system/devices/virtual/device.error.min.js
+favicon.ico
+offline.min.js
+
+FALLBACK:
+index.min.js offline.min.js
+
+NETWORK:
+*

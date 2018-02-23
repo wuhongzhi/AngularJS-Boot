@@ -1,0 +1,11 @@
+{
+    "name": "game",
+    "safe": true,
+    "dynamic": false,
+    "modules": {
+        "main": {
+            "script": "2048.js",
+            "template": "2048.html"
+        }
+    }
+}

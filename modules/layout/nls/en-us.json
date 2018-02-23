@@ -1,0 +1,9 @@
+{
+    "en-us"   : "English",
+    "zh-cn"   : "中文",
+    "application" : "Application",
+    "label.home": "Home",
+    "label.field.message.required": "This is required!",
+    "label.field.message.minlength": "Minimum {0} chars",
+    "label.field.message.maxlength": "Maximum {0} chars" 
+}

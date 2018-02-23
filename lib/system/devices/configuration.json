@@ -1,0 +1,16 @@
+{
+   	"depends": {
+		"mobile" : [
+			"lib/system/devices/device.power",
+			"lib/system/devices/device.network",
+			"lib/system/devices/device.scanner"
+		],
+		"desktop" : [
+			"lib/system/devices/virtual/device.power",
+			"lib/system/devices/virtual/device.network"
+		],
+		"browser" : [
+			"lib/system/devices/virtual/device.network"
+		]
+	}
+}

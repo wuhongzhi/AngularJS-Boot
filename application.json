@@ -1,0 +1,20 @@
+{
+    "name": "APPLICATION",
+    "environment": {
+        "html5": false,
+        "locale": "zh-cn",
+        "locales": ["zh-cn", "en-us"],
+        "theme": "material",
+        "services": "rest/",
+        "layout": "/modules/layout/main",
+        "index": "/modules/index/main",
+        "logon": "/modules/logon/main"
+    },
+    "includes": [
+        "modules/layout/module.json",
+        "modules/index/module.json",
+        "modules/logon/module.json",
+        "modules/2048/module.json",
+        "modules/module-x/module.json"
+    ]
+}
