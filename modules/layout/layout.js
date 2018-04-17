@@ -10,43 +10,45 @@ define(['require', 'exports', 'application'], function(require, exports, applica
             });
         }
     });
-    module.run(['$sce', function($sce) {
+    module.config(['$mdThemingProvider', function($mdThemingProvider) {
+        // $mdThemingProvider.theme('default')
+        //     .primaryPalette('purple')
+        //     .warnPalette('amber');
+    }]).run(['$sce', function($sce) {
         var tempate = $sce.getTrustedResourceUrl(application.layout.templateUrl);
         bodyElement.removeClass("gui-progress");
         bodyElement.html(LAYOUT.replace('TEMPLATE', tempate));
-    }]).controller('AppLayoutController', 
-        ['$scope', '$location', '$rootElement', function($scope, $location, $rootElement) {
-            $scope.title = {
-                name : application.name
-            };
-            $scope.view = {
-                index : application.index
-            };
-            $scope.$on('$localeChangeSuccess', function() {
-                $rootElement.find('title').text($scope.language.translate(application.name));            
-            });
-            var session = $location.search()['session'];
-            if (session) {
-                $scope.uri = $location.path();
-            } else {
-                $scope.uri = application.logon;
-            }
-            $scope.$watch("uri", function(uri, ouri) {
-                if ($location.path() != uri && ouri) {
-                    $location.path(uri);
-                }
-            });
-            $scope.$on($scope.security.ENFORCED, function() {
-                $scope.uri = application.index;
-            });
-            $scope.$on($scope.security.UNSECURED, function() {
-                $scope.uri = application.logon;
-            });
-            $rootElement.on("contextmenu", function(e) {
-                if (application.uefi.prodMode) {
-                    e.preventDefault();
-                }
-            });
+    }]).controller('AppLayoutController', ['$scope', '$location', '$rootElement', function($scope, $location, $rootElement) {
+        $scope.title = {
+            name: application.name
+        };
+        $scope.view = {
+            index: application.index
+        };
+        $scope.$on('$localeChangeSuccess', function() {
+            $rootElement.find('title').text($scope.language.translate(application.name));
+        });
+        var session = $location.search()['session'];
+        if (session) {
+            $scope.uri = $location.path();
+        } else {
+            $scope.uri = application.logon;
         }
-    ]);
+        $scope.$watch("uri", function(uri, ouri) {
+            if ($location.path() != uri && ouri) {
+                $location.path(uri);
+            }
+        });
+        $scope.$on($scope.security.ENFORCED, function() {
+            $scope.uri = application.index;
+        });
+        $scope.$on($scope.security.UNSECURED, function() {
+            $scope.uri = application.logon;
+        });
+        $rootElement.on("contextmenu", function(e) {
+            if (application.uefi.prodMode) {
+                e.preventDefault();
+            }
+        });
+    }]);
 });

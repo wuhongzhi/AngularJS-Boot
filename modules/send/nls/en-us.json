@@ -1,0 +1,12 @@
+{
+    "label.title.datagram": "DATAGRAM TEST",
+    "label.button.send": "send",
+    "label.ui.send.format" : "Format",
+    "label.ui.send.format.json": "JSON",
+    "label.ui.send.format.xml": "XML",
+    "label.ui.send.datagram" : "Datagram",
+    "label.ui.send.ping": "PING",
+    "label.ui.send.request": "Request",
+    "label.ui.send.response": "Response"
+
+}

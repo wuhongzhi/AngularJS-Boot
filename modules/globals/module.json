@@ -1,6 +1,6 @@
 {
     "name": "components demonstration",
-    "dynamic": false,
+    "dynamic": true,
     "includes": [
         "components/module.json"
     ]

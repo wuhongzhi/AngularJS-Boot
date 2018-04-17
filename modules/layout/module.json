@@ -2,6 +2,10 @@
     "name": "layout",
     "safe": true,
     "dynamic": false,
+    "environment": {
+        "index": "/modules/layout/index/main",
+        "logon": "/modules/send/main"
+    },
     "modules": {
         "main": {
             "language": {
@@ -11,5 +15,9 @@
             "script": "layout.js",
             "template": "layout-${theme}.html"
         }
-    }
+    },
+    "includes": [
+        "index/module.json",
+        "logon/module.json"
+    ]
 }

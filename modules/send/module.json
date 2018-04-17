@@ -1,0 +1,16 @@
+{
+    "name": "send",
+    "safe": true,
+    "dynamic": true,
+    "modules": {
+        "main": {
+            "language": {
+                "en-us": "nls/en-us.json",
+                "zh-cn": "nls/zh-cn.json"
+            },
+            "script": "send.js",
+            "template": "send.${theme}.html",
+            "depends": ["../../globals/components/shared.components"]
+        }
+    }
+}
