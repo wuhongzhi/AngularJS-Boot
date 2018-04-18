@@ -1,5 +1,5 @@
 define({
 	version: "1.0.0",
-	production: false,
+	production: true,
 	cache: true
 });

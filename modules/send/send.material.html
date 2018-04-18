@@ -39,7 +39,11 @@
                 <div flex>
                     <md-input-container>
                         <label>{{::'label.ui.send.request' | translate}}</label>
-                        <textarea name="req" ng-model="ctrl.req" rows="20" max-rows="20" cols="120" wrap="off" md-detect-hidden="false" ng-change="ctrl.reset();"></textarea>
+                        <textarea name="req" ng-model="ctrl.req" minbytes="1" maxbytes="10" charset="gbk" rows="20" max-rows="20" cols="120" wrap="off" md-detect-hidden="false" ng-change="ctrl.reset();"></textarea>
+                        <div ng-messages="mainFrom.req.$error">
+                            <div ng-message="minbytes">{{::'label.field.message.minbytes' | translate:1}}</div>
+                            <div ng-message="maxbytes">{{::'label.field.message.maxbytes' | translate:10}}</div>
+                        </div>
                     </md-input-container>
                 </div>
                 <div flex>

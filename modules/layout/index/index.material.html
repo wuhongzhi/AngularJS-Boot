@@ -1,7 +1,7 @@
 <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
   <md-content class="md-padding">
     <form ng-submit="$event.preventDefault()">
-      <p>{{'label.index.title' | translate }}</p>
+      <p>{{::'label.index.title' | translate }}</p>
       <md-autocomplete
           ng-disabled="ctrl.isDisabled"
           md-no-cache="ctrl.noCache"
@@ -18,14 +18,14 @@
         </md-item-template>
         <md-not-found>
           {{'label.index.type' | translate:ctrl.searchText}}
-          <a ng-click="ctrl.newState(ctrl.searchText)">{{'label.index.hint' | translate}}</a>
+          <a ng-click="ctrl.newState(ctrl.searchText)">{{::'label.index.hint' | translate}}</a>
         </md-not-found>
       </md-autocomplete>
       <br/>
-      <md-checkbox ng-model="ctrl.simulateQuery">{{'label.index.hint.button1' | translate}}</md-checkbox>
-      <md-checkbox ng-model="ctrl.noCache">{{'label.index.hint.button2' | translate}}</md-checkbox>
-      <md-checkbox ng-model="ctrl.isDisabled">{{'label.index.hint.button3' | translate}}</md-checkbox>
-      <p>{{'label.index.hints' | translate}}</p>
+      <md-checkbox ng-model="ctrl.simulateQuery">{{::'label.index.hint.button1' | translate}}</md-checkbox>
+      <md-checkbox ng-model="ctrl.noCache">{{::'label.index.hint.button2' | translate}}</md-checkbox>
+      <md-checkbox ng-model="ctrl.isDisabled">{{::'label.index.hint.button3' | translate}}</md-checkbox>
+      <p>{{::'label.index.hints' | translate}}</p>
     </form>
   </md-content>
 </div>

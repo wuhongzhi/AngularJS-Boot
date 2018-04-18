@@ -2,6 +2,7 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
+  font-display: fallback;
   src: url(fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
   src: local('fonts/Material Icons'),
        local('fonts/MaterialIcons-Regular'),
