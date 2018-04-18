@@ -1,0 +1,23 @@
+{
+    "paths":
+    {
+        "jquery": "lib/jquery/jquery.slim",
+        "angular": "lib/angular.js/angular",
+        "angular-animate": "lib/angular.js/angular-animate",
+        "angular-aria": "lib/angular.js/angular-aria",
+        "angular-cookies": "lib/angular.js/angular-cookies",
+        "angular-messages": "lib/angular.js/angular-messages",
+        "angular-resource": "lib/angular.js/angular-resource",
+        "angular-sanitize": "lib/angular.js/angular-sanitize"
+    },
+    "shim":
+    {
+        "angular": ["jquery"],
+        "angular-animate": ["angular"],
+        "angular-aria": ["angular"],
+        "angular-cookies": ["angular"],
+        "angular-messages": ["angular"],
+        "angular-resource": ["angular"],
+        "angular-sanitize": ["angular"]
+    }
+}
