@@ -5,11 +5,9 @@
         "locale": "zh-cn",
         "locales": ["zh-cn", "en-us"],
         "theme": "material",
-        "services": "rest/",
-        "layout": "/modules/layout/main"
+        "services": "rest/"
     },
     "includes": [
-        "modules/layout/module.json",
-        "modules/apps/module.json"
+        "modules/module.json"
     ]
 }

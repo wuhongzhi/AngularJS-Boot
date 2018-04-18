@@ -9,6 +9,7 @@ css/shared/icons/awesome/font-awesome.min.css
 css/themes/bootstrap/bootstrap-theme.min.css
 css/themes/bootstrap/bootstrap.min.css
 css/themes/material/angular-material.min.css
+css/themes/material/angular-material-icons.min.css
 #FONT FILES
 #css/shared/icons/awesome/fonts/FontAwesome.otf
 #css/shared/icons/awesome/fonts/fontawesome-webfont.woff2
@@ -47,21 +48,26 @@ lib/require-plugins/json.min.js
 lib/require-plugins/text.min.js
 lib/require.min.js
 #FRAMEWORK LIBRARY FILES
-#lib/system/bios.min.js
-#lib/system/kernel.min.js
-#lib/system/init.min.js
-#lib/system/modules/system.device.min.js
-#lib/system/modules/system.cache.min.js
-#lib/system/modules/gui.theme.min.js
-#lib/system/modules/gui.qrcode.min.js
-#lib/system/modules/gui.language.min.js
-#lib/system/modules/system.http.min.js
-#lib/system/modules/system.route.min.js
-#lib/system/modules/system.security.min.js
-#lib/system/modules/system.dynamic.min.js
-#lib/system/devices/virtual/device.network.min.js
-#lib/system/modules/gui.qrcode.drawer.min.js
-#lib/system/devices/virtual/device.error.min.js
+lib/system/init.min.js
+lib/system/uefi.min.js
+lib/system/kernel.min.js
+lib/system/devices/device.network.min.js
+lib/system/devices/device.power.min.js
+lib/system/devices/device.scanner.min.js
+lib/system/devices/virtual/device.error.min.js
+lib/system/devices/virtual/device.network.min.js
+lib/system/devices/virtual/device.power.min.js
+lib/system/modules/gui.language.min.js
+lib/system/modules/gui.qrcode.drawer.min.js
+lib/system/modules/gui.qrcode.min.js
+lib/system/modules/gui.theme.min.js
+lib/system/modules/system.cache.min.js
+lib/system/modules/system.device.min.js
+lib/system/modules/system.dynamic.min.js
+lib/system/modules/system.http.min.js
+lib/system/modules/system.route.min.js
+lib/system/modules/system.security.min.js
+#INDEX RESOURCES
 favicon.ico
 offline.min.js
 

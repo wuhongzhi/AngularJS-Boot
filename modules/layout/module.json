@@ -3,8 +3,7 @@
     "safe": true,
     "dynamic": false,
     "environment": {
-        "index": "/modules/layout/index/main",
-        "logon": "/modules/send/main"
+        "layout": "/modules/layout/main"
     },
     "modules": {
         "main": {

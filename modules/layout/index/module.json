@@ -2,6 +2,9 @@
     "name": "index",
     "safe": false,
     "dynamic": true,
+    "environment": {
+        "index": "/modules/layout/index/main"
+    },
     "modules": {
         "main": {
             "language": {

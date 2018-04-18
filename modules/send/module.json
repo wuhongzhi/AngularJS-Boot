@@ -1,6 +1,9 @@
 {
     "name": "send",
     "safe": true,
+    "environment": {
+       "logon": "/modules/send/main"
+    },
     "modules": {
         "main": {
             "language": {

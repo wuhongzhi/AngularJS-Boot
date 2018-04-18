@@ -1,9 +1,0 @@
-{
-    "name": "apps",
-    "dynamic": true,
-    "includes": [
-        "../globals/module.json",
-        "../send/module.json",
-        "../2048/module.json"
-    ]
-}

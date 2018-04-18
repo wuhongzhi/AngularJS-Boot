@@ -2,6 +2,9 @@
     "name": "authentication",
     "safe": true,
     "dynamic": false,
+    "environment": {
+       "!logon": "/modules/layout/logon/main"
+    },
     "modules": {
         "main": {
             "language": {
