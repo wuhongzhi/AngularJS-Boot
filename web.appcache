@@ -11,17 +11,22 @@ css/themes/bootstrap/bootstrap.min.css
 css/themes/material/angular-material.min.css
 css/themes/material/angular-material-icons.min.css
 #FONT FILES
-#css/shared/icons/awesome/fonts/FontAwesome.otf
-#css/shared/icons/awesome/fonts/fontawesome-webfont.woff2
-#css/shared/icons/awesome/fonts/fontawesome-webfont.woff
-#css/shared/icons/awesome/fonts/fontawesome-webfont.ttf
-#css/shared/icons/awesome/fonts/fontawesome-webfont.svg
-#css/shared/icons/awesome/fonts/fontawesome-webfont.eot
-#css/themes/bootstrap/fonts/glyphicons-halflings-regular.woff2
-#css/themes/bootstrap/fonts/glyphicons-halflings-regular.woff
-#css/themes/bootstrap/fonts/glyphicons-halflings-regular.ttf
-#css/themes/bootstrap/fonts/glyphicons-halflings-regular.svg
-#css/themes/bootstrap/fonts/glyphicons-halflings-regular.eot
+css/shared/icons/awesome/fonts/FontAwesome.otf
+css/shared/icons/awesome/fonts/fontawesome-webfont.woff2
+css/shared/icons/awesome/fonts/fontawesome-webfont.woff
+css/shared/icons/awesome/fonts/fontawesome-webfont.ttf
+css/shared/icons/awesome/fonts/fontawesome-webfont.svg
+css/shared/icons/awesome/fonts/fontawesome-webfont.eot
+css/themes/bootstrap/fonts/glyphicons-halflings-regular.woff2
+css/themes/bootstrap/fonts/glyphicons-halflings-regular.woff
+css/themes/bootstrap/fonts/glyphicons-halflings-regular.ttf
+css/themes/bootstrap/fonts/glyphicons-halflings-regular.svg
+css/themes/bootstrap/fonts/glyphicons-halflings-regular.eot
+css/themes/material/fonts/MaterialIcons-Regular.woff2
+css/themes/material/fonts/MaterialIcons-Regular.woff
+css/themes/material/fonts/MaterialIcons-Regular.ttf
+css/themes/material/fonts/MaterialIcons-Regular.svg
+css/themes/material/fonts/MaterialIcons-Regular.eot
 #LIBRARY FILES
 lib/angular-bootstrap/ui-bootstrap-tpls.min.js
 lib/angular-material/angular-material.min.js
@@ -48,6 +53,7 @@ lib/require-plugins/json.min.js
 lib/require-plugins/text.min.js
 lib/require.min.js
 #FRAMEWORK LIBRARY FILES
+lib/system/kernel.json
 lib/system/init.min.js
 lib/system/uefi.min.js
 lib/system/kernel.min.js
