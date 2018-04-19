@@ -1,6 +1,6 @@
 define(['require', 'exports', 'application'], function(require, exports, application) {
     "use strict";
-    var module = angular.module("twentyfourtyeightApp", ["Game", "Grid", "Keyboard", "ngAnimate", "ngCookies"]);
+    var module = angular.module("twentyfourtyeightApp", ["Game", "ngAnimate", "ngCookies"]);
     angular.extend(exports, {
         name: module.name,
         module: function(resolved) {
@@ -9,435 +9,641 @@ define(['require', 'exports', 'application'], function(require, exports, applica
             });
         }
     });
-    module.config(["GridServiceProvider", function(a) {
-        a.setSize(4)
-    }
-    ]).controller("GameController", ["GameManager", "KeyboardService", "$location", function(a, b, c) {
-        this.game = a,
+
+    module.config(['GridServiceProvider', function(GridServiceProvider) {
+        GridServiceProvider.setSize(4);
+    }]).controller('GameController', ['GameManager', 'KeyboardService', '$scope', '$location',
+        function(GameManager, KeyboardService, $scope, $location) {
+
+        this.game = GameManager;
+
         this.newGame = function() {
-            b.init(),
-            this.game.newGame(),
-            this.startGame()
-        }
-        ,
+            KeyboardService.init();
+            this.game.newGame();
+            this.startGame();
+        };
+
         this.startGame = function() {
-            var a = this;
-            b.on(function(b) {
-                a.game.move(b)
-            })
-        }
-        ,
-        this.tryAgain = function() {
-            c.path("/modules/logon/main");
-        },
-        this.newGame()
-    }
-    ]),
-    angular.module("Grid", []).factory("GenerateUniqueId", function() {
-        var a = function() {
-            var a = (new Date).getTime()
-              , b = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(b) {
-                var c = (a + 16 * Math.random()) % 16 | 0;
-                return a = Math.floor(a / 16),
-                ("x" === b ? c : 7 & c | 8).toString(16)
+            var self = this;
+            KeyboardService.on(function(key) {
+                self.game.move(key);
+                $scope.$digest();
             });
-            return b
         };
-        return {
-            next: function() {
-                return a()
-            }
-        }
-    }).factory("TileModel", ["GenerateUniqueId", function(a) {
-        var b = function(b, c) {
-            this.x = b.x,
-            this.y = b.y,
-            this.value = c || 2,
-            this.id = a.next(),
-            this.merged = null
+
+        this.tryAgain = function() {
+            $location.path(application.index);
         };
-        return b.prototype.savePosition = function() {
-            this.originalX = this.x,
-            this.originalY = this.y
-        }
-        ,
-        b.prototype.reset = function() {
-            this.merged = null
-        }
-        ,
-        b.prototype.setMergedBy = function(a) {
-            var b = this;
-            a.forEach(function(a) {
-                a.merged = !0,
-                a.updatePosition(b.getPosition())
-            })
-        }
-        ,
-        b.prototype.updateValue = function(a) {
-            this.value = a
-        }
-        ,
-        b.prototype.updatePosition = function(a) {
-            this.x = a.x,
-            this.y = a.y
-        }
-        ,
-        b.prototype.getPosition = function() {
-            return {
-                x: this.x,
-                y: this.y
-            }
-        }
-        ,
-        b
-    }
-    ]).provider("GridService", function() {
-        this.size = 4,
-        this.startingTileNumber = 2,
-        this.setSize = function(a) {
-            this.size = a ? a : 0
-        }
-        ,
-        this.setStartingTiles = function(a) {
-            this.startingTileNumber = a
-        }
-        ;
-        var a = this;
-        this.$get = ["TileModel", function(b) {
-            this.grid = [],
-            this.tiles = [];
-            var c = {
-                left: {
-                    x: -1,
-                    y: 0
-                },
-                right: {
-                    x: 1,
-                    y: 0
-                },
-                up: {
-                    x: 0,
-                    y: -1
-                },
-                down: {
-                    x: 0,
-                    y: 1
-                }
-            };
-            return this.getSize = function() {
-                return a.size
-            }
-            ,
-            this.buildEmptyGameBoard = function() {
-                for (var b = this, c = 0; c < a.size * a.size; c++)
-                    this.grid[c] = null;
-                this.forEach(function(a, c) {
-                    b.setCellAt({
-                        x: a,
-                        y: c
-                    }, null)
-                })
-            }
-            ,
-            this.prepareTiles = function() {
-                this.forEach(function(a, b, c) {
-                    c && (c.savePosition(),
-                    c.reset())
-                })
-            }
-            ,
-            this.traversalDirections = function(a) {
-                for (var b = c[a], d = {
-                    x: [],
-                    y: []
-                }, e = 0; e < this.size; e++)
-                    d.x.push(e),
-                    d.y.push(e);
-                return b.x > 0 && (d.x = d.x.reverse()),
-                b.y > 0 && (d.y = d.y.reverse()),
-                d
-            }
-            ,
-            this.calculateNextPosition = function(a, b) {
-                var d, e = c[b];
-                do
-                    d = a,
-                    a = {
-                        x: d.x + e.x,
-                        y: d.y + e.y
-                    };
-                while (this.withinGrid(a) && this.cellAvailable(a));return {
-                    newPosition: d,
-                    next: this.getCellAt(a)
-                }
-            }
-            ,
-            this.withinGrid = function(a) {
-                return a.x >= 0 && a.x < this.size && a.y >= 0 && a.y < this.size
-            }
-            ,
-            this.cellAvailable = function(a) {
-                return this.withinGrid(a) ? !this.getCellAt(a) : null
-            }
-            ,
-            this.buildStartingPosition = function() {
-                for (var a = 0; a < this.startingTileNumber; a++)
-                    this.randomlyInsertNewTile()
-            }
-            ,
-            this.tileMatchesAvailable = function() {
-                for (var b = a.size * a.size, d = 0; b > d; d++) {
-                    var e = this._positionToCoordinates(d)
-                      , f = this.tiles[d];
-                    if (f)
-                        for (var g in c) {
-                            var h = c[g]
-                              , i = {
-                                x: e.x + h.x,
-                                y: e.y + h.y
-                            }
-                              , j = this.getCellAt(i);
-                            if (j && j.value === f.value)
-                                return !0
-                        }
-                }
-                return !1
-            }
-            ,
-            this.getCellAt = function(a) {
-                if (this.withinGrid(a)) {
-                    var b = this._coordinatesToPosition(a);
-                    return this.tiles[b]
-                }
-                return null
-            }
-            ,
-            this.setCellAt = function(a, b) {
-                if (this.withinGrid(a)) {
-                    var c = this._coordinatesToPosition(a);
-                    this.tiles[c] = b
-                }
-            }
-            ,
-            this.moveTile = function(a, b) {
-                var c = {
-                    x: a.x,
-                    y: a.y
-                };
-                this.setCellAt(c, null),
-                this.setCellAt(b, a),
-                a.updatePosition(b)
-            }
-            ,
-            this.forEach = function(b) {
-                for (var c = a.size * a.size, d = 0; c > d; d++) {
-                    var e = this._positionToCoordinates(d);
-                    b(e.x, e.y, this.tiles[d])
-                }
-            }
-            ,
-            this._positionToCoordinates = function(b) {
-                var c = b % a.size
-                  , d = (b - c) / a.size;
-                return {
-                    x: c,
-                    y: d
-                }
-            }
-            ,
-            this._coordinatesToPosition = function(b) {
-                return b.y * a.size + b.x
-            }
-            ,
-            this.insertTile = function(a) {
-                var b = this._coordinatesToPosition(a);
-                this.tiles[b] = a
-            }
-            ,
-            this.newTile = function(a, c) {
-                return new b(a,c)
-            }
-            ,
-            this.removeTile = function(a) {
-                a = this._coordinatesToPosition(a),
-                delete this.tiles[a]
-            }
-            ,
-            this.samePositions = function(a, b) {
-                return a.x === b.x && a.y === b.y
-            }
-            ,
-            this.availableCells = function() {
-                var a = []
-                  , b = this;
-                return this.forEach(function(c, d) {
-                    var e = b.getCellAt({
-                        x: c,
-                        y: d
-                    });
-                    e || a.push({
-                        x: c,
-                        y: d
-                    })
-                }),
-                a
-            }
-            ,
-            this.randomlyInsertNewTile = function() {
-                var a = this.randomAvailableCell()
-                  , b = this.newTile(a, 2);
-                this.insertTile(b)
-            }
-            ,
-            this.randomAvailableCell = function() {
-                var a = this.availableCells();
-                return a.length > 0 ? a[Math.floor(Math.random() * a.length)] : void 0
-            }
-            ,
-            this.anyCellsAvailable = function() {
-                return this.availableCells().length > 0
-            }
-            ,
-            this
-        }
-        ]
-    }),
-    angular.module("Grid").directive("grid", function() {
-        return {
-            restrict: "A",
-            require: "ngModel",
-            scope: {
-                ngModel: "="
-            },
-            templateUrl: "scripts/grid/grid.html"
-        }
-    }),
-    angular.module("Grid").directive("tile", function() {
-        return {
-            restrict: "A",
-            scope: {
-                ngModel: "="
-            },
-            templateUrl: "scripts/grid/tile.html"
-        }
-    }),
-    angular.module("Keyboard", []).service("KeyboardService", ["$document", '$rootScope', function(a, scope) {
-        var b = "up"
-          , c = "right"
-          , d = "down"
-          , e = "left"
-          , f = {
-            37: e,
-            38: b,
-            39: c,
-            40: d
-        };
-        this.init = function() {
-            var b = this;
-            this.keyEventHandlers = [],
-            a.bind("keydown", function(a) {
-                var c = f[a.which];
-                c && (a.preventDefault(),
-                b._handleKeyEvent(c, a))
-            })
-        }
-        ,
-        this.on = function(a) {
-            this.keyEventHandlers.push(a)
-        }
-        ,
-        this._handleKeyEvent = function(a, b) {
-            var c = this.keyEventHandlers;
-            if (c && (b.preventDefault(),
-            c))
-                for (var d = 0; d < c.length; d++) {
-                    var e = c[d];
-                    e(a, b)
-                }
-            scope.$apply();
-        }
-    }
-    ]),
-    angular.module("Game", ["Grid", "ngCookies"]).service("GameManager", ["$q", "$timeout", "GridService", "$cookieStore", function(a, b, c, d) {
-        this.getHighScore = function() {
-            return parseInt(d.get("highScore")) || 0
-        }
-        ,
-        this.grid = c.grid,
-        this.tiles = c.tiles,
-        this.gameSize = c.getSize(),
-        this.winningValue = 2048,
-        this.reinit = function() {
-            this.gameOver = !1,
-            this.win = !1,
-            this.currentScore = 0,
-            this.highScore = this.getHighScore()
-        }
-        ,
-        this.reinit(),
-        this.newGame = function() {
-            c.buildEmptyGameBoard(),
-            c.buildStartingPosition(),
-            this.reinit()
-        }
-        ,
-        this.move = function(b) {
-            var d = this
-              , e = function() {
-                if (d.win)
-                    return !1;
-                var a = c.traversalDirections(b)
-                  , e = !1
-                  , f = !1;
-                c.prepareTiles(),
-                a.x.forEach(function(g) {
-                    a.y.forEach(function(a) {
-                        var h = {
-                            x: g,
-                            y: a
-                        }
-                          , i = c.getCellAt(h);
-                        if (i) {
-                            var j = c.calculateNextPosition(i, b)
-                              , k = j.next;
-                            if (k && k.value === i.value && !k.merged) {
-                                var l = 2 * i.value
-                                  , m = c.newTile(i, l);
-                                m.merged = [i, j.next],
-                                c.insertTile(m),
-                                c.removeTile(i),
-                                c.moveTile(m, k),
-                                d.updateScore(d.currentScore + j.next.value),
-                                m.value >= d.winningValue && (f = !0),
-                                e = !0
-                            } else
-                                c.moveTile(i, j.newPosition);
-                            c.samePositions(h, j.newPosition) || (e = !0)
-                        }
-                    })
-                }),
-                f && !d.win && (d.win = !0),
-                e && (c.randomlyInsertNewTile(),
-                (d.win || !d.movesAvailable()) && (d.gameOver = !0))
-            };
-            return a.when(e())
-        }
-        ,
-        this.movesAvailable = function() {
-            return c.anyCellsAvailable() || c.tileMatchesAvailable()
-        }
-        ,
-        this.updateScore = function(a) {
-            this.currentScore = a,
-            this.currentScore > this.getHighScore() && (this.highScore = a,
-            d.put("highScore", a))
-        }
-    }
-    ]);
-    module.run(['$templateCache', function($templateCache) {
+
+        this.newGame();
+    }]).run(['$templateCache', function($templateCache) {
         'use strict';
-        $templateCache.put('scripts/grid/grid.html', "<div id=\"game-{{ ngModel.gameSize }}\">\n" + "  <div class=\"grid-container\">\n" + "    <div class=\"grid-cell\" ng-repeat=\"cell in ngModel.grid track by $index\"></div>\n" + "  </div>\n" + "\n" + "  <div class=\"tile-container\">\n" + "    <div tile \n" + "          ng-model='tile'\n" + "          ng-repeat='tile in ngModel.tiles track by $id(tile.id || $index)'></div>\n" + "  </div>\n" + "</div>");
-        $templateCache.put('scripts/grid/tile.html', "<div ng-if='ngModel' class=\"tile position-{{ ngModel.x }}-{{ ngModel.y }} tile-{{ ngModel.value }}\" \n" + "  ng-class=\"{ 'tile-merged': ngModel.merged}\">\n" + "  <div class=\"tile-inner\">\n" + "    {{ ngModel.value }}\n" + "  </div>\n" + "</div>\n");
-    }
-    ]);
+
+        $templateCache.put('scripts/grid/grid.html',
+            "<div id=\"game-{{ ngModel.gameSize }}\">\n" +
+            "  <div class=\"grid-container\">\n" +
+            "    <div class=\"grid-cell\" ng-repeat=\"cell in ngModel.grid track by $index\"></div>\n" +
+            "  </div>\n" +
+            "\n" +
+            "  <div class=\"tile-container\">\n" +
+            "    <div tile \n" +
+            "          ng-model='tile'\n" +
+            "          ng-repeat='tile in ngModel.tiles track by $id(tile.id || $index)'></div>\n" +
+            "  </div>\n" +
+            "</div>"
+        );
+
+        $templateCache.put('scripts/grid/tile.html',
+            "<div ng-if='ngModel' class=\"tile position-{{ ngModel.x }}-{{ ngModel.y }} tile-{{ ngModel.value }} {{ngModel.merged?'tile-merged':''}}\" >\n" +
+            "  <div class=\"tile-inner\">\n" +
+            "    {{ ngModel.value }}\n" +
+            "  </div>\n" +
+            "</div>\n"
+        );
+
+    }]);
+
+    angular.module('Game', ['Grid', 'Keyboard', 'ngCookies'])
+        .service('GameManager', ['$q', '$timeout', 'GridService', '$cookieStore', function($q, $timeout, GridService, $cookieStore) {
+
+            this.getHighScore = function() {
+                return parseInt($cookieStore.get('highScore')) || 0;
+            };
+
+            this.grid = GridService.grid;
+            this.tiles = GridService.tiles;
+            this.gameSize = GridService.getSize();
+
+            this.winningValue = 2048;
+
+            this.reinit = function() {
+                this.gameOver = false;
+                this.win = false;
+                this.currentScore = 0;
+                this.highScore = this.getHighScore();
+            };
+            this.reinit();
+
+            this.newGame = function() {
+                GridService.buildEmptyGameBoard();
+                GridService.buildStartingPosition();
+                this.reinit();
+            };
+
+            /*
+             * The game loop
+             *
+             * Inside here, we'll run every 'interesting'
+             * event (interesting events are listed in the Keyboard service)
+             * For every event, we'll:
+             *  1. look up the appropriate vector
+             *  2. find the furthest possible locations for each tile and 
+             *     the next tile over
+             *  3. find any spots that can be 'merged'
+             *    a. if we find a spot that can be merged:
+             *      i. remove both tiles
+             *      ii. add a new tile with the double value
+             *    b. if we don't find a merge:
+             *      i. move the original tile
+             */
+            this.move = function(key) {
+                var self = this;
+                var f = function() {
+                    if (self.win) {
+                        return false;
+                    }
+                    var positions = GridService.traversalDirections(key);
+                    var hasMoved = false;
+                    var hasWon = false;
+
+                    // Update Grid
+                    GridService.prepareTiles();
+
+                    positions.x.forEach(function(x) {
+                        positions.y.forEach(function(y) {
+                            var originalPosition = {
+                                x: x,
+                                y: y
+                            };
+                            var tile = GridService.getCellAt(originalPosition);
+
+                            if (tile) {
+                                var cell = GridService.calculateNextPosition(tile, key),
+                                    next = cell.next;
+
+                                if (next &&
+                                    next.value === tile.value &&
+                                    !next.merged) {
+
+                                    // MERGE
+                                    var newValue = tile.value * 2;
+
+                                    var merged = GridService.newTile(tile, newValue);
+                                    merged.merged = [tile, cell.next];
+
+                                    GridService.insertTile(merged);
+                                    GridService.removeTile(tile);
+
+                                    GridService.moveTile(merged, next);
+
+                                    self.updateScore(self.currentScore + cell.next.value);
+
+                                    if (merged.value >= self.winningValue) {
+                                        hasWon = true;
+                                    }
+                                    hasMoved = true; // we moved with a merge
+                                } else {
+                                    GridService.moveTile(tile, cell.newPosition);
+                                }
+
+                                if (!GridService.samePositions(originalPosition, cell.newPosition)) {
+                                    hasMoved = true;
+                                }
+                            }
+                        });
+                    });
+
+                    if (hasWon && !self.win) {
+                        self.win = true;
+                    }
+
+                    if (hasMoved) {
+                        GridService.randomlyInsertNewTile();
+
+                        if (self.win || !self.movesAvailable()) {
+                            self.gameOver = true;
+                        }
+                    }
+
+                };
+                return $q.when(f());
+            };
+
+            this.movesAvailable = function() {
+                return GridService.anyCellsAvailable() || GridService.tileMatchesAvailable();
+            };
+
+            this.updateScore = function(newScore) {
+                this.currentScore = newScore;
+                if (this.currentScore > this.getHighScore()) {
+                    this.highScore = newScore;
+                    $cookieStore.put('highScore', newScore);
+                }
+            };
+
+        }]);
+
+    angular.module('Grid', [])
+        .factory('GenerateUniqueId', function() {
+            var generateUid = function() {
+                // http://www.ietf.org/rfc/rfc4122.txt
+                // http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
+                var d = new Date().getTime();
+                var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    var r = (d + Math.random() * 16) % 16 | 0;
+                    d = Math.floor(d / 16);
+                    return (c === 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+                });
+                return uuid;
+            };
+            return {
+                next: function() {
+                    return generateUid();
+                }
+            };
+        })
+        .factory('TileModel', ['GenerateUniqueId', function(GenerateUniqueId) {
+            var Tile = function(pos, val) {
+                this.x = pos.x;
+                this.y = pos.y;
+                this.value = val || 2;
+
+                this.id = GenerateUniqueId.next();
+                this.merged = null;
+            };
+
+            Tile.prototype.savePosition = function() {
+                this.originalX = this.x;
+                this.originalY = this.y;
+            };
+
+            Tile.prototype.reset = function() {
+                this.merged = null;
+            };
+
+            Tile.prototype.setMergedBy = function(arr) {
+                var self = this;
+                arr.forEach(function(tile) {
+                    tile.merged = true;
+                    tile.updatePosition(self.getPosition());
+                });
+            };
+
+            Tile.prototype.updateValue = function(newVal) {
+                this.value = newVal;
+            };
+
+            Tile.prototype.updatePosition = function(newPosition) {
+                this.x = newPosition.x;
+                this.y = newPosition.y;
+            };
+
+            Tile.prototype.getPosition = function() {
+                return {
+                    x: this.x,
+                    y: this.y
+                };
+            };
+
+            return Tile;
+        }])
+        .provider('GridService', function() {
+            this.size = 4; // Default size
+            this.startingTileNumber = 2; // default starting tiles
+
+            this.setSize = function(sz) {
+                this.size = sz ? sz : 0;
+            };
+
+            this.setStartingTiles = function(num) {
+                this.startingTileNumber = num;
+            };
+
+            var service = this;
+
+            this.$get = ['TileModel', function(TileModel) {
+                this.grid = [];
+                this.tiles = [];
+
+                // Private things
+                var vectors = {
+                    'left': {
+                        x: -1,
+                        y: 0
+                    },
+                    'right': {
+                        x: 1,
+                        y: 0
+                    },
+                    'up': {
+                        x: 0,
+                        y: -1
+                    },
+                    'down': {
+                        x: 0,
+                        y: 1
+                    }
+                };
+
+                this.getSize = function() {
+                    return service.size;
+                };
+
+                // Build game board
+                this.buildEmptyGameBoard = function() {
+                    var self = this;
+                    // Initialize our grid
+                    for (var x = 0; x < service.size * service.size; x++) {
+                        this.grid[x] = null;
+                    }
+
+                    this.forEach(function(x, y) {
+                        self.setCellAt({
+                            x: x,
+                            y: y
+                        }, null);
+                    });
+                };
+
+                /*
+                 * Prepare for traversal
+                 */
+                this.prepareTiles = function() {
+                    this.forEach(function(x, y, tile) {
+                        if (tile) {
+                            tile.savePosition();
+                            tile.reset();
+                        }
+                    });
+                };
+
+                /*
+                 * Due to the fact we calculate the next positions
+                 * in order, we need to specify the order in which
+                 * we calculate the next positions
+                 */
+                this.traversalDirections = function(key) {
+                    var vector = vectors[key];
+                    var positions = {
+                        x: [],
+                        y: []
+                    };
+                    for (var x = 0; x < this.size; x++) {
+                        positions.x.push(x);
+                        positions.y.push(x);
+                    }
+
+                    if (vector.x > 0) {
+                        positions.x = positions.x.reverse();
+                    }
+                    if (vector.y > 0) {
+                        positions.y = positions.y.reverse();
+                    }
+
+                    return positions;
+                };
+
+
+                /*
+                 * Calculate the next position for a tile
+                 */
+                this.calculateNextPosition = function(cell, key) {
+                    var vector = vectors[key];
+                    var previous;
+
+                    do {
+                        previous = cell;
+                        cell = {
+                            x: previous.x + vector.x,
+                            y: previous.y + vector.y
+                        };
+                    } while (this.withinGrid(cell) && this.cellAvailable(cell));
+
+                    return {
+                        newPosition: previous,
+                        next: this.getCellAt(cell)
+                    };
+                };
+
+
+                /*
+                 * Is the position within the grid?
+                 */
+                this.withinGrid = function(cell) {
+                    return cell.x >= 0 && cell.x < this.size &&
+                        cell.y >= 0 && cell.y < this.size;
+                };
+
+                /*
+                 * Is a cell available at a given position
+                 */
+                this.cellAvailable = function(cell) {
+                    if (this.withinGrid(cell)) {
+                        return !this.getCellAt(cell);
+                    } else {
+                        return null;
+                    }
+                };
+
+                /*
+                 * Build the initial starting position
+                 * with randomly placed tiles
+                 */
+                this.buildStartingPosition = function() {
+                    for (var x = 0; x < this.startingTileNumber; x++) {
+                        this.randomlyInsertNewTile();
+                    }
+                };
+
+                /*
+                 * Check to see if there are any matches available
+                 */
+                this.tileMatchesAvailable = function() {
+                    var totalSize = service.size * service.size;
+                    for (var i = 0; i < totalSize; i++) {
+                        var pos = this._positionToCoordinates(i);
+                        var tile = this.tiles[i];
+
+                        if (tile) {
+                            // Check all vectors
+                            for (var vectorName in vectors) {
+                                var vector = vectors[vectorName];
+                                var cell = {
+                                    x: pos.x + vector.x,
+                                    y: pos.y + vector.y
+                                };
+                                var other = this.getCellAt(cell);
+                                if (other && other.value === tile.value) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                    return false;
+                };
+
+                /*
+                 * Get a cell at a position
+                 */
+                this.getCellAt = function(pos) {
+                    if (this.withinGrid(pos)) {
+                        var x = this._coordinatesToPosition(pos);
+                        return this.tiles[x];
+                    } else {
+                        return null;
+                    }
+                };
+
+                /*
+                 * Set a cell at position
+                 */
+                this.setCellAt = function(pos, tile) {
+                    if (this.withinGrid(pos)) {
+                        var xPos = this._coordinatesToPosition(pos);
+                        this.tiles[xPos] = tile;
+                    }
+                };
+
+                this.moveTile = function(tile, newPosition) {
+                    var oldPos = {
+                        x: tile.x,
+                        y: tile.y
+                    };
+
+                    this.setCellAt(oldPos, null);
+                    this.setCellAt(newPosition, tile);
+
+                    tile.updatePosition(newPosition);
+                };
+
+                /*
+                 * Run a callback for every cell
+                 * either on the grid or tiles
+                 */
+                this.forEach = function(cb) {
+                    var totalSize = service.size * service.size;
+                    for (var i = 0; i < totalSize; i++) {
+                        var pos = this._positionToCoordinates(i);
+                        cb(pos.x, pos.y, this.tiles[i]);
+                    }
+                };
+
+                /*
+                 * Helper to convert x to x,y
+                 */
+                this._positionToCoordinates = function(i) {
+                    var x = i % service.size,
+                        y = (i - x) / service.size;
+                    return {
+                        x: x,
+                        y: y
+                    };
+                };
+
+                /*
+                 * Helper to convert coordinates to position
+                 */
+                this._coordinatesToPosition = function(pos) {
+                    return (pos.y * service.size) + pos.x;
+                };
+
+                /*
+                 * Insert a new tile
+                 */
+                this.insertTile = function(tile) {
+                    var pos = this._coordinatesToPosition(tile);
+                    this.tiles[pos] = tile;
+                };
+
+                this.newTile = function(pos, value) {
+                    return new TileModel(pos, value);
+                };
+
+                /*
+                 * Remove a tile
+                 */
+                this.removeTile = function(pos) {
+                    pos = this._coordinatesToPosition(pos);
+                    delete this.tiles[pos];
+                };
+
+                /*
+                 * Same position
+                 */
+                this.samePositions = function(a, b) {
+                    return a.x === b.x && a.y === b.y;
+                };
+
+                /*
+                 * Get all the available tiles
+                 */
+                this.availableCells = function() {
+                    var cells = [],
+                        self = this;
+
+                    this.forEach(function(x, y) {
+                        var foundTile = self.getCellAt({
+                            x: x,
+                            y: y
+                        });
+                        if (!foundTile) {
+                            cells.push({
+                                x: x,
+                                y: y
+                            });
+                        }
+                    });
+
+                    return cells;
+                };
+
+                /*
+                 * Randomly insert a new tile
+                 */
+                this.randomlyInsertNewTile = function() {
+                    var cell = this.randomAvailableCell(),
+                        tile = this.newTile(cell, 2);
+                    this.insertTile(tile);
+                };
+
+                /*
+                 * Get a randomly available cell from all the
+                 * currently available cells
+                 */
+                this.randomAvailableCell = function() {
+                    var cells = this.availableCells();
+                    if (cells.length > 0) {
+                        return cells[Math.floor(Math.random() * cells.length)];
+                    }
+                };
+
+                /*
+                 * Check to see there are still cells available
+                 */
+                this.anyCellsAvailable = function() {
+                    return this.availableCells().length > 0;
+                };
+
+                return this;
+            }];
+        })
+        .directive('grid', function() {
+            return {
+                restrict: 'A',
+                require: 'ngModel',
+                scope: {
+                    ngModel: '='
+                },
+                templateUrl: 'scripts/grid/grid.html'
+            };
+        }).directive('tile', function() {
+            return {
+                restrict: 'A',
+                scope: {
+                    ngModel: '='
+                },
+                templateUrl: 'scripts/grid/tile.html'
+            };
+        });
+
+    angular.module('Keyboard', [])
+        .service('KeyboardService', ['$document', function($document) {
+
+            var UP = 'up',
+                RIGHT = 'right',
+                DOWN = 'down',
+                LEFT = 'left';
+
+            var keyboardMap = {
+                37: LEFT,
+                38: UP,
+                39: RIGHT,
+                40: DOWN
+            };
+
+            this.init = function() {
+                var self = this;
+                this.keyEventHandlers = [];
+                $document.on('keydown', function(evt) {
+                    var key = keyboardMap[evt.which];
+
+                    if (key) {
+                        // An interesting key was pressed
+                        evt.preventDefault();
+                        self._handleKeyEvent(key, evt);
+                    }
+                });
+            };
+
+            this.on = function(cb) {
+                this.keyEventHandlers.push(cb);
+            };
+
+            this._handleKeyEvent = function(key, evt) {
+                var callbacks = this.keyEventHandlers;
+                if (!callbacks) {
+                    return;
+                }
+
+                evt.preventDefault();
+
+                if (callbacks) {
+                    for (var x = 0; x < callbacks.length; x++) {
+                        var cb = callbacks[x];
+                        cb(key, evt);
+                    }
+                }
+            };
+
+        }]);
 });
