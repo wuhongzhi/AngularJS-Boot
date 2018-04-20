@@ -6,6 +6,7 @@
     "label.field.message.required": "这是必输项",
     "label.field.message.minlength": "最少{0}个字符",
     "label.field.message.maxlength": "最多{0}个字符",
+	"label.field.message.charset": "含有字符集{0}不支持字符",
     "label.field.message.minbytes": "最少{0}个字节",
     "label.field.message.maxbytes": "最多{0}个字节" 
 }

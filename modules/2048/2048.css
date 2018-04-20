@@ -1025,8 +1025,8 @@ h1.title {
 
     50% {
         opacity: 1;
-        -webkit-transform: scale(1.2);
-        transform: scale(1.2)
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5)
     }
 
     100% {
@@ -1045,8 +1045,8 @@ h1.title {
 
     50% {
         opacity: 1;
-        -webkit-transform: scale(1.2);
-        transform: scale(1.2)
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5)
     }
 
     100% {
@@ -1064,8 +1064,8 @@ h1.title {
     }
 
     50% {
-        -webkit-transform: scale(1.2);
-        transform: scale(1.2)
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5)
     }
 
     100% {
@@ -1083,8 +1083,8 @@ h1.title {
     }
 
     50% {
-        -webkit-transform: scale(1.2);
-        transform: scale(1.2)
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5)
     }
 
     100% {

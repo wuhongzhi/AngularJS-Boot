@@ -30,11 +30,6 @@ define(['require', 'exports', 'application'], function(require, exports, applica
                 $scope.$digest();
             });
         };
-
-        this.tryAgain = function() {
-            $location.path(application.index);
-        };
-
         this.newGame();
     }]).run(['$templateCache', function($templateCache) {
         'use strict';

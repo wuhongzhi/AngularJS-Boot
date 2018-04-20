@@ -6,6 +6,7 @@
     "label.field.message.required": "This is required!",
     "label.field.message.minlength": "Minimum {0} chars",
     "label.field.message.maxlength": "Maximum {0} chars", 
+	"label.field.message.charset": "Invalid characters which are not supported in charset {0}",
     "label.field.message.minbytes": "Minimum {0} bytes",
     "label.field.message.maxbytes": "Maximum {0} bytes" 
 }
