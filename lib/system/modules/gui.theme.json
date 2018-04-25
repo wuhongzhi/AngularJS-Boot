@@ -16,7 +16,7 @@
                 "style!css/shared/icons/awesome/font-awesome",
                 "style!css/themes/material/angular-material-icons",
                 "style!css/themes/bootstrap/bootstrap",
-                "style!css/themes/bootstrap/bootstrap-theme",
+                "style!css/themes/bootstrap/bootstrap-theme"
             ],
             "ui-material": [
                 "angular-sanitize",
