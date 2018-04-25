@@ -1,0 +1,51 @@
+{
+    "depends":
+    {
+        "paths":
+        {
+            "angular-touch": "lib/angular.js/angular-touch",
+            "ui-bootstrap": "lib/angular-bootstrap/ui-bootstrap-tpls",
+            "ui-material": "lib/angular-material/angular-material"
+        },
+        "shim":
+        {
+            "angular-touch": ["angular"],
+            "ui-bootstrap": [
+                "angular-sanitize",
+                "angular-touch",
+                "style!css/shared/icons/awesome/font-awesome",
+                "style!css/themes/material/angular-material-icons",
+                "style!css/themes/bootstrap/bootstrap",
+                "style!css/themes/bootstrap/bootstrap-theme",
+            ],
+            "ui-material": [
+                "angular-sanitize",
+                "style!css/shared/icons/awesome/font-awesome",
+                "style!css/themes/material/angular-material",
+                "style!css/themes/material/angular-material-icons"
+            ]
+        }
+    },
+    "themes":
+    {
+        "material":
+        {
+            "depends": [
+                "ngMaterial"
+            ],
+            "modules": [
+                "ui-material"
+            ],
+            "flex": true
+        },
+        "bootstrap":
+        {
+            "depends": [
+                "ui.bootstrap", "ngTouch"
+            ],
+            "modules": [
+                "ui-bootstrap"
+            ]
+        }
+    }
+}
