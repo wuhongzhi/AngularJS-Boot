@@ -53,7 +53,7 @@ lib/require-plugins/json.min.js
 lib/require-plugins/text.min.js
 lib/require.min.js
 #FRAMEWORK LIBRARY FILES
-lib/system/kernel.json
+lib/system/etc/kernel.json
 lib/system/init.min.js
 lib/system/uefi.min.js
 lib/system/kernel.min.js
