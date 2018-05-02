@@ -40,6 +40,7 @@ lib/angular.js/angular-touch.min.js
 lib/angular.js/angular.min.js
 lib/angular.js/i18n/angular-locale_en-us.js
 lib/angular.js/i18n/angular-locale_zh-cn.js
+lib/crypto-js/crypto-js.min.js
 lib/es5-shim/es5-sham.min.js
 lib/es5-shim/es5-shim.min.js
 lib/es6-shim/es6-sham.min.js
