@@ -16,19 +16,14 @@ define(['require', 'exports', 'application'], function(require, exports, applica
         function(GameManager, KeyboardService, $scope, $location) {
 
         this.game = GameManager;
-
+        KeyboardService.init();
+        var self = this;
+        KeyboardService.on(function(key) {
+            self.game.move(key);
+            $scope.$digest();
+        });
         this.newGame = function() {
-            KeyboardService.init();
             this.game.newGame();
-            this.startGame();
-        };
-
-        this.startGame = function() {
-            var self = this;
-            KeyboardService.on(function(key) {
-                self.game.move(key);
-                $scope.$digest();
-            });
         };
         this.newGame();
     }]).run(['$templateCache', function($templateCache) {
