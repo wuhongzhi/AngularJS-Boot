@@ -17,7 +17,7 @@
  * under the License.
  */
 define(['require', 'version', 'index.i18n.min', 'lib/modernizr/modernizr.min'], function(require, version, i18n) {
-    var bootTime = new Date().getTime();
+    console.time('Boot Application');
     if (!Modernizr.typedarrays) {
         var lang = i18n[(navigator.language || navigator.userLanguages || i18n.failback).toLowerCase()];
         var information = [lang.title,
@@ -68,9 +68,8 @@ define(['require', 'version', 'index.i18n.min', 'lib/modernizr/modernizr.min'], 
             ready: function() {
                 removeClass(container, 'logo');
                 container.className = '';
-                var elapsed = new Date().getTime() - bootTime;
                 this.progress = function() {};
-                this.message("Taken " + (elapsed) + "ms to boot up.");
+                console.timeEnd("Boot Application");
             },
             message: function(message) {
                 window.console && console.log(message);
