@@ -1,33 +1,38 @@
 {
-    "depends": {
-        "paths": {
+    "depends":
+    {
+        "paths":
+        {
             "angular-route": "lib/angular.js/angular-route",
-            "system-http": "lib/system/modules/system.http",
-            "system-device": "lib/system/modules/system.device",
-            "system-security": "lib/system/modules/system.security",
-            "system-route": "lib/system/modules/system.route",
+            "gui-language": "lib/system/modules/gui.language",
+            "gui-qrcode": "lib/system/modules/gui.qrcode",
+            "gui-theme": "lib/system/modules/gui.theme",
             "system-cache": "lib/system/modules/system.cache",
+            "system-crypto": "lib/system/modules/system.crypto",
+            "system-device": "lib/system/modules/system.device",
             "system-dynamic": "lib/system/modules/system.dynamic",
-            "system-language": "lib/system/modules/gui.language",
-            "system-qrcode": "lib/system/modules/gui.qrcode",
-            "system-theme": "lib/system/modules/gui.theme"
+            "system-http": "lib/system/modules/system.http",
+            "system-route": "lib/system/modules/system.route",
+            "system-security": "lib/system/modules/system.security"
         },
-        "shim": {
-            "system-route": ["angular-route", "system-cache"],
-            "system-security": ["system-http"],
-            "system-language": ["system-cache"],
-            "system-dynamic": ["system-http", "system-language"]
+        "shim":
+        {
+            "gui-language": ["system-cache"],
+            "system-dynamic": ["system-http", "gui-language"],
+            "system-route": ["angular-route", "gui-language"],
+            "system-security": ["system-http"]
         }
     },
     "includes": [
-        "system-device",
+        "gui-language",
+        "gui-qrcode",
+        "gui-theme",
         "system-cache",
-        "system-http",
-        "system-security",
+        "system-crypto",
+        "system-device",
         "system-dynamic",
+        "system-http",
         "system-route",
-        "system-language",
-        "system-theme",
-        "system-qrcode"
+        "system-security"
     ]
 }
