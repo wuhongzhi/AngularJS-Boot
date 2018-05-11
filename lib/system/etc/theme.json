@@ -12,15 +12,13 @@
             "angular-touch": ["angular"],
             "ui-bootstrap": [
                 "angular-sanitize",
-                "angular-touch",
-                "style!css/shared/icons/awesome/font-awesome",
-                "style!css/themes/material/angular-material-icons",
                 "style!css/themes/bootstrap/bootstrap",
-                "style!css/themes/bootstrap/bootstrap-theme"
+                "style!css/themes/bootstrap/bootstrap-theme",
+                "style!css/shared/icons/awesome/font-awesome"
             ],
             "ui-material": [
+                "angular-touch",
                 "angular-sanitize",
-                "style!css/shared/icons/awesome/font-awesome",
                 "style!css/themes/material/angular-material",
                 "style!css/themes/material/angular-material-icons"
             ]
