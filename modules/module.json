@@ -2,7 +2,6 @@
     "includes": [
         "layout/module.json",
         "globals/module.json",
-        "send/module.json",
         "2048/module.json"
     ]
 }

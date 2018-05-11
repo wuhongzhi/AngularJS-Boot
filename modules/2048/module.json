@@ -2,6 +2,9 @@
     "name": "game",
     "safe": true,
     "dynamic": false,
+    "environment": {
+       "logon": "/modules/2048/main"
+    },
     "modules": {
         "main": {
             "script": "2048.js",
