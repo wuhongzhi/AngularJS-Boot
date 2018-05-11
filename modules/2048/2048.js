@@ -603,7 +603,7 @@ define(['require', 'exports', 'application'], function(require, exports, applica
             this.init = function($scope) {
                 var self = this;
                 this.keyEventHandlers = [];
-                $rootElement.on('keydown', function(evt) {
+                $rootElement.keydown(function(evt) {
                     var key = keyboardMap[evt.which];
                     if (key) {
                         // An interesting key was pressed

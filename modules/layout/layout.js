@@ -1,7 +1,6 @@
 define(['require', 'exports', 'application'], function(require, exports, application) {
     var module = angular.module('application.layout', ['ng', 'gui.language', 'system.security', 'system.cache']),
-        LAYOUT = "<ng-include src=\"'TEMPLATE'\"></ng-include>",
-        bodyElement = angular.element(document).find('body');
+        LAYOUT = "<ng-include src=\"'TEMPLATE'\"></ng-include>";
     angular.extend(exports, {
         name: module.name,
         module: function(resolved) {
@@ -14,10 +13,10 @@ define(['require', 'exports', 'application'], function(require, exports, applica
         // $mdThemingProvider.theme('default')
         //     .primaryPalette('purple')
         //     .warnPalette('amber');
-    }]).run(['$sce', function($sce) {
+    }]).run(['$sce', '$rootElement', function($sce, $rootElement) {
         var tempate = $sce.getTrustedResourceUrl(application.layout.templateUrl);
-        bodyElement.removeClass("gui-progress");
-        bodyElement.html(LAYOUT.replace('TEMPLATE', tempate));
+        $rootElement.removeClass("gui-progress");
+        $rootElement.html(LAYOUT.replace('TEMPLATE', tempate));
     }]).controller('AppLayoutController', ['$scope', '$location', '$rootElement', function($scope, $location, $rootElement) {
         $scope.title = {
             name: application.name
@@ -45,7 +44,7 @@ define(['require', 'exports', 'application'], function(require, exports, applica
         $scope.$on($scope.security.UNSECURED, function() {
             $scope.uri = application.logon;
         });
-        $rootElement.on("contextmenu", function(e) {
+        $rootElement.contextmenu(function(e) {
             if (application.uefi.prodMode) {
                 e.preventDefault();
             }
