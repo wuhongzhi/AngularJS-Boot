@@ -1,6 +1,6 @@
 define(['require', 'exports', 'application'], function(require, exports, application) {
     "use strict";
-    var module = angular.module("twentyfourtyeightApp", ["Game", "ngAnimate", "ngCookies"]);
+    var module = angular.module("2048", ["Game", "ngAnimate", "ngCookies"]);
     angular.extend(exports, {
         name: module.name,
         module: function(resolved) {
@@ -12,15 +12,14 @@ define(['require', 'exports', 'application'], function(require, exports, applica
 
     module.config(['GridServiceProvider', function(GridServiceProvider) {
         GridServiceProvider.setSize(4);
-    }]).controller('GameController', ['GameManager', 'KeyboardService', '$scope', '$location',
-        function(GameManager, KeyboardService, $scope, $location) {
+    }]).controller('GameController', ['GameManager', 'KeyboardService', '$location', '$scope',
+        function(GameManager, KeyboardService, $location, $scope) {
 
         this.game = GameManager;
-        KeyboardService.init();
+        KeyboardService.init($scope);
         var self = this;
         KeyboardService.on(function(key) {
             self.game.move(key);
-            $scope.$digest();
         });
         this.newGame = function() {
             this.game.newGame();
@@ -587,7 +586,7 @@ define(['require', 'exports', 'application'], function(require, exports, applica
         });
 
     angular.module('Keyboard', [])
-        .service('KeyboardService', ['$document', function($document) {
+        .service('KeyboardService', ['$rootElement', function($rootElement) {
 
             var UP = 'up',
                 RIGHT = 'right',
@@ -601,16 +600,16 @@ define(['require', 'exports', 'application'], function(require, exports, applica
                 40: DOWN
             };
 
-            this.init = function() {
+            this.init = function($scope) {
                 var self = this;
                 this.keyEventHandlers = [];
-                $document.on('keydown', function(evt) {
+                $rootElement.on('keydown', function(evt) {
                     var key = keyboardMap[evt.which];
-
                     if (key) {
                         // An interesting key was pressed
                         evt.preventDefault();
                         self._handleKeyEvent(key, evt);
+                        $scope.$digest();
                     }
                 });
             };
