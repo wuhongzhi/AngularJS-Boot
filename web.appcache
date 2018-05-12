@@ -5,6 +5,7 @@ CACHE:
 /favicon.ico
 /img/background.png
 #CSS FILES
+css/application/index.min.css
 css/shared/icons/awesome/font-awesome.min.css
 css/themes/bootstrap/bootstrap-theme.min.css
 css/themes/bootstrap/bootstrap.min.css
@@ -37,6 +38,7 @@ lib/angular.js/angular-resource.min.js
 lib/angular.js/angular-route.min.js
 lib/angular.js/angular-sanitize.min.js
 lib/angular.js/angular-touch.min.js
+lib/angular.js/angular-cookies.min.js
 lib/angular.js/angular.min.js
 lib/angular.js/i18n/angular-locale_en-us.js
 lib/angular.js/i18n/angular-locale_zh-cn.js
@@ -69,6 +71,7 @@ lib/system/modules/gui.qrcode.drawer.min.js
 lib/system/modules/gui.qrcode.min.js
 lib/system/modules/gui.theme.min.js
 lib/system/modules/system.cache.min.js
+lib/system/modules/system.crypto.min.js
 lib/system/modules/system.device.min.js
 lib/system/modules/system.dynamic.min.js
 lib/system/modules/system.http.min.js
@@ -77,6 +80,8 @@ lib/system/modules/system.security.min.js
 #INDEX RESOURCES
 favicon.ico
 offline.min.js
+index.i18n.min.js
+index.min.js
 
 FALLBACK:
 index.min.js offline.min.js
