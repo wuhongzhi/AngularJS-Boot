@@ -84,7 +84,7 @@ index.i18n.min.js
 index.min.js
 
 FALLBACK:
-index.min.js offline.min.js
+version.js offline.min.js
 
 NETWORK:
 *

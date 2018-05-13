@@ -3,7 +3,6 @@
     {
         "paths":
         {
-            "jquery": "lib/jquery/jquery.slim",
             "angular": "lib/angular.js/angular",
             "angular-animate": "lib/angular.js/angular-animate",
             "angular-aria": "lib/angular.js/angular-aria",
