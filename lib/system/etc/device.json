@@ -3,12 +3,11 @@
 	{
 		"mobile": [
 			"lib/system/devices/device.power",
-			"lib/system/devices/device.network",
-			"lib/system/devices/device.scanner"
+			"lib/system/devices/device.scanner",
+			"lib/system/devices/device.network"
 		],
 		"desktop": [
 			"lib/system/devices/virtual/device.display",
-			"lib/system/devices/virtual/device.power",
 			"lib/system/devices/virtual/device.network"
 		],
 		"browser": [
