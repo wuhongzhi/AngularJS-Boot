@@ -53,10 +53,10 @@ define(['require', 'exports', 'application'], function(require, exports, applica
     }]);
 
     angular.module('Game', ['Grid', 'Keyboard', 'ngCookies'])
-        .service('GameManager', ['$q', '$timeout', 'GridService', '$cookieStore', function($q, $timeout, GridService, $cookieStore) {
+        .service('GameManager', ['$q', '$timeout', 'GridService', '$cookies', function($q, $timeout, GridService, $cookies) {
 
             this.getHighScore = function() {
-                return parseInt($cookieStore.get('highScore')) || 0;
+                return parseInt($cookies.get('highScore')) || 0;
             };
 
             this.grid = GridService.grid;
@@ -176,7 +176,7 @@ define(['require', 'exports', 'application'], function(require, exports, applica
                 this.currentScore = newScore;
                 if (this.currentScore > this.getHighScore()) {
                     this.highScore = newScore;
-                    $cookieStore.put('highScore', newScore);
+                    $cookies.put('highScore', newScore);
                 }
             };
 
