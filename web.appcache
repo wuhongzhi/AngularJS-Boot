@@ -63,9 +63,9 @@ lib/system/kernel.min.js
 lib/system/devices/device.network.min.js
 lib/system/devices/device.power.min.js
 lib/system/devices/device.scanner.min.js
+lib/system/devices/device.display.min.js
 lib/system/devices/virtual/device.error.min.js
 lib/system/devices/virtual/device.network.min.js
-lib/system/devices/virtual/device.power.min.js
 lib/system/modules/gui.language.min.js
 lib/system/modules/gui.qrcode.drawer.min.js
 lib/system/modules/gui.qrcode.min.js
