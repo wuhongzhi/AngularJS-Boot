@@ -57,6 +57,9 @@ define(['require', 'version', 'index.i18n.min', 'lib/modernizr/modernizr.min'], 
         if (Modernizr.applicationcache) {
             var appCache =  window.applicationCache;
             if (appCache.status == appCache.UPDATEREADY) {
+                if (Modernizr.localstorage) {
+                    localStorage.clear();
+                }
                 appCache.swapCache();
                 return window.location.reload();
             }
