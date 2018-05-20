@@ -13,10 +13,7 @@
     </div>
     <div id="game-container">
         <div grid="" ng-model="ctrl.game" class="row"></div>
-        <div id="game-over" ng-if="ctrl.game.gameOver" class="row game-overlay">Game over
-            <div class="lower"><a class="retry-button" ng-click="ctrl.newGame()">Try again</a></div>
-        </div>
-        <div id="win" ng-if="ctrl.game.win" class="row game-overlay">You win!
+        <div id="game-over" ng-if="ctrl.game.gameOver" class="row game-overlay">{{ctrl.game.win ? "You win!" : "Game over"}}
             <div class="lower"><a class="retry-button" ng-click="ctrl.newGame()">Try again</a></div>
         </div>
     </div>
