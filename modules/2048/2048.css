@@ -298,7 +298,6 @@ h1.title {
     text-align: center;
     font-weight: 700;
     z-index: 10;
-    font-size: 2.5em
 }
 
 #game-4 {
@@ -436,47 +435,58 @@ h1.title {
 }
 
 #game-4 .tile-container .tile.tile-2 .tile-inner {
-    background: #EEE4DA
+    background: #EEE4DA;
+    font-size: 2.5em;
 }
 
 #game-4 .tile-container .tile.tile-4 .tile-inner {
-    background: #EAE0C8
+    background: #EAE0C8;
+    font-size: 2.5em;
 }
 
 #game-4 .tile-container .tile.tile-8 .tile-inner {
-    background: #F59563
+    background: #F59563;
+    font-size: 2.5em;
 }
 
 #game-4 .tile-container .tile.tile-16 .tile-inner {
-    background: #39f
+    background: #39f;
+    font-size: 2.5em;
 }
 
 #game-4 .tile-container .tile.tile-32 .tile-inner {
-    background: #ffa333
+    background: #ffa333;
+    font-size: 2.5em;
 }
 
 #game-4 .tile-container .tile.tile-64 .tile-inner {
-    background: #cef030
+    background: #cef030;
+    font-size: 2.5em;
 }
 
 #game-4 .tile-container .tile.tile-128 .tile-inner {
-    background: #E8D8CE
+    background: #E8D8CE;
+    font-size: 2em;
 }
 
 #game-4 .tile-container .tile.tile-256 .tile-inner {
-    background: #990303
+    background: #990303;
+    font-size: 2em;
 }
 
 #game-4 .tile-container .tile.tile-512 .tile-inner {
-    background: #6BA5DE
+    background: #6BA5DE;
+    font-size: 2em;
 }
 
 #game-4 .tile-container .tile.tile-1024 .tile-inner {
-    background: #DCAD60
+    background: #DCAD60;
+    font-size: 1.5em;
 }
 
 #game-4 .tile-container .tile.tile-2048 .tile-inner {
-    background: #B60022
+    background: #B60022;
+    font-size: 1.5em;
 }
 
 #game-4 .tile-container .tile:last-child {
