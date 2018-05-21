@@ -13,6 +13,7 @@
             "system-dynamic": "lib/system/modules/system.dynamic",
             "system-http": "lib/system/modules/system.http",
             "system-route": "lib/system/modules/system.route",
+            "system-rxjs": "lib/system/modules/system.rxjs",
             "system-security": "lib/system/modules/system.security"
         },
         "shim":
@@ -33,6 +34,7 @@
         "system-dynamic",
         "system-http",
         "system-route",
+        "system-rxjs",
         "system-security"
     ]
 }
