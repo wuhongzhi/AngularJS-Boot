@@ -1,5 +1,6 @@
 package.json
 cordova.mock.js
 favicon.ico
-img/background.png
+img/splash.png
+img/splash-large.png
 application.json

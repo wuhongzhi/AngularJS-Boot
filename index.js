@@ -70,10 +70,13 @@ define(['require', 'version', 'index.i18n.min', 'lib/modernizr/modernizr.min'], 
             '<div id="application-progress-box" class="meter blue">' +
                 '<span id="application-progress" style="width: 0%"></span>'+
             '</div>';
+        addClass(container, 'logo');
+        container.style.minHeight = window.innerHeight + "px";
         define('display', display = {
             indicator: document.getElementById("application-progress"),
             ready: function() {
                 removeClass(container, 'logo');
+                container.style.minHeight = '';
                 container.className = '';
                 this.progress = function() {};
                 this.message("Boot application was taken " + (new Date().getTime() - stime) + "ms");
@@ -82,9 +85,6 @@ define(['require', 'version', 'index.i18n.min', 'lib/modernizr/modernizr.min'], 
                 window.console && console.log(message);
             },
             progress: function(percent) {
-                if (percent === 0) {
-                    addClass(container, 'logo');
-                }
                 this.indicator.style.width = percent + "%";
             }
         });

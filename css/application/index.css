@@ -1,4 +1,12 @@
+html,
 body {
+    height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     width: 100%;
     height: 100%;
@@ -7,17 +15,19 @@ body {
 
 @media screen and (width: 300px) and (height: 370px) {
     .logo {
-        background: url("../../img/logo.png");
+        background: url("../../img/splash.png");
         background-repeat: no-repeat;
         background-position-x: 50%;
-        background-position-y: -35%;
+        background-position-y: 45%;
     }
 }
 
 @media screen and (min-width: 301px) {
     .logo {
-        background: url("../../img/background.png");
-        background-repeat: repeat;
+        background: url("../../img/splash-large.png");
+        background-repeat: no-repeat;
+        background-position-x: 50%;
+        background-position-y: 45%;
     }
 }
 
