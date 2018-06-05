@@ -9,19 +9,16 @@ define(['require', 'exports', 'application'], function(require, exports, applica
             });
         }
     });
-    module.config(['$mdThemingProvider', function($mdThemingProvider) {
-        // $mdThemingProvider.theme('default')
-        //     .primaryPalette('purple')
-        //     .warnPalette('amber');
-    }]).run(['$sce', '$rootElement', function($sce, $rootElement) {
+    module.run(['$sce', '$rootElement', function($sce, $rootElement) {
         var tempate = $sce.getTrustedResourceUrl(application.layout.templateUrl);
         $rootElement.removeClass("gui-progress");
         $rootElement.html(LAYOUT.replace('TEMPLATE', tempate));
     }]).controller('AppLayoutController', ['$scope', '$location', '$rootElement', function($scope, $location, $rootElement) {
-        $scope.title = {
+        var self = this;
+        self.title = {
             name: application.name
         };
-        $scope.view = {
+        self.view = {
             index: application.index
         };
         $scope.$on('$localeChangeSuccess', function() {
@@ -29,20 +26,22 @@ define(['require', 'exports', 'application'], function(require, exports, applica
         });
         var session = $location.search()['session'];
         if (session) {
-            $scope.uri = $location.path();
+            self.uri = $location.path();
         } else {
-            $scope.uri = application.logon;
+            self.uri = application.logon;
         }
-        $scope.$watch("uri", function(uri, ouri) {
+        $scope.$watch(function() {
+            return self.uri;
+        }, function(uri, ouri) {
             if ($location.path() != uri && ouri) {
                 $location.path(uri);
             }
         });
         $scope.$on($scope.security.ENFORCED, function() {
-            $scope.uri = application.index;
+            self.uri = application.index;
         });
         $scope.$on($scope.security.UNSECURED, function() {
-            $scope.uri = application.logon;
+            self.uri = application.logon;
         });
         $rootElement.contextmenu(function(e) {
             if (application.uefi.prodMode) {
