@@ -17,8 +17,7 @@ body {
     .logo {
         background: url("../../img/splash.png");
         background-repeat: no-repeat;
-        background-position-x: 50%;
-        background-position-y: 45%;
+        background-position: center;
     }
 }
 
@@ -26,8 +25,7 @@ body {
     .logo {
         background: url("../../img/splash-large.png");
         background-repeat: no-repeat;
-        background-position-x: 50%;
-        background-position-y: 45%;
+        background-position: center;
     }
 }
 
