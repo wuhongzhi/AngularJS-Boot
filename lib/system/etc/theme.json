@@ -4,23 +4,30 @@
         "paths":
         {
             "angular-touch": "lib/angular.js/angular-touch",
-            "ui-bootstrap": "lib/angular-bootstrap/ui-bootstrap-tpls",
+            "ui-bootstrap3": "lib/angular-bootstrap3/ui-bootstrap-tpls",
+            "ui-bootstrap4": "lib/angular-bootstrap4/ui-bootstrap-tpls",
             "ui-material": "lib/angular-material/angular-material"
         },
         "shim":
         {
             "angular-touch": ["angular"],
-            "ui-bootstrap": [
-                "angular-touch",
-                "angular-sanitize",
-                "style!css/themes/bootstrap/bootstrap",
-                "style!css/themes/bootstrap/bootstrap-theme",
-                "style!css/shared/icons/awesome/font-awesome"
-            ],
             "ui-material": [
                 "angular-sanitize",
                 "style!css/themes/material/angular-material",
                 "style!css/themes/material/angular-material-icons"
+            ],
+            "ui-bootstrap3": [
+                "angular-touch",
+                "angular-sanitize",
+                "style!css/themes/bootstrap3/bootstrap",
+                "style!css/themes/bootstrap3/bootstrap-theme",
+                "style!css/shared/icons/awesome/font-awesome"
+            ],
+            "ui-bootstrap4": [
+                "angular-touch",
+                "angular-sanitize",
+                "style!css/themes/bootstrap4/bootstrap",
+                "style!css/shared/icons/awesome/font-awesome"
             ]
         }
     },
@@ -36,13 +43,22 @@
             ],
             "flex": true
         },
-        "bootstrap":
+        "bootstrap3":
         {
             "depends": [
                 "ui.bootstrap", "ngTouch"
             ],
             "modules": [
-                "ui-bootstrap"
+                "ui-bootstrap3"
+            ]
+        },
+        "bootstrap4":
+        {
+            "depends": [
+                "ui.bootstrap", "ngTouch"
+            ],
+            "modules": [
+                "ui-bootstrap4"
             ]
         }
     }
