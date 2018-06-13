@@ -3,7 +3,7 @@ CACHE MANIFEST
 CACHE:
 #IMAGE FILES
 /favicon.ico
-/img/splash.png
+#/img/splash.png
 /img/splash-large.png
 #CSS FILES
 css/application/index.min.css
