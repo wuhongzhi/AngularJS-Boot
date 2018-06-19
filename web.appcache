@@ -7,30 +7,15 @@ CACHE:
 /img/splash-large.png
 #CSS FILES
 css/application/index.min.css
-css/shared/icons/awesome/font-awesome.min.css
-css/themes/bootstrap/bootstrap-theme.min.css
-css/themes/bootstrap/bootstrap.min.css
 css/themes/material/angular-material.min.css
 css/themes/material/angular-material-icons.min.css
 #FONT FILES
-css/shared/icons/awesome/fonts/FontAwesome.otf
-css/shared/icons/awesome/fonts/fontawesome-webfont.woff2
-css/shared/icons/awesome/fonts/fontawesome-webfont.woff
-css/shared/icons/awesome/fonts/fontawesome-webfont.ttf
-css/shared/icons/awesome/fonts/fontawesome-webfont.svg
-css/shared/icons/awesome/fonts/fontawesome-webfont.eot
-css/themes/bootstrap/fonts/glyphicons-halflings-regular.woff2
-css/themes/bootstrap/fonts/glyphicons-halflings-regular.woff
-css/themes/bootstrap/fonts/glyphicons-halflings-regular.ttf
-css/themes/bootstrap/fonts/glyphicons-halflings-regular.svg
-css/themes/bootstrap/fonts/glyphicons-halflings-regular.eot
 css/themes/material/fonts/MaterialIcons-Regular.woff2
 css/themes/material/fonts/MaterialIcons-Regular.woff
 css/themes/material/fonts/MaterialIcons-Regular.ttf
 css/themes/material/fonts/MaterialIcons-Regular.svg
 css/themes/material/fonts/MaterialIcons-Regular.eot
 #LIBRARY FILES
-lib/angular-bootstrap/ui-bootstrap-tpls.min.js
 lib/angular-material/angular-material.min.js
 lib/angular.js/angular-animate.min.js
 lib/angular.js/angular-aria.min.js
@@ -56,6 +41,8 @@ lib/require-plugins/css.min.js
 lib/require-plugins/json.min.js
 lib/require-plugins/text.min.js
 lib/require.min.js
+lib/rxjs/rxjs.umd.min.js
+lib/immutable/immutable.min.js
 #FRAMEWORK LIBRARY FILES
 lib/system/etc/kernel.json
 lib/system/init.min.js
@@ -77,7 +64,8 @@ lib/system/modules/system.device.min.js
 lib/system/modules/system.dynamic.min.js
 lib/system/modules/system.http.min.js
 lib/system/modules/system.route.min.js
-lib/system/modules/system.security.min.js
+lib/system/modules/system.rxjs.min.js
+lib/system/modules/system.immutable.min.js
 #INDEX RESOURCES
 favicon.ico
 offline.min.js

@@ -14,6 +14,7 @@
             "system-http": "lib/system/modules/system.http",
             "system-route": "lib/system/modules/system.route",
             "system-rxjs": "lib/system/modules/system.rxjs",
+            "system-immutable": "lib/system/modules/system.immutable",
             "system-security": "lib/system/modules/system.security"
         },
         "shim":
@@ -35,6 +36,7 @@
         "system-http",
         "system-route",
         "system-rxjs",
+        "system-immutable",
         "system-security"
     ]
 }
