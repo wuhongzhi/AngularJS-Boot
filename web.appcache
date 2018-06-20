@@ -43,6 +43,7 @@ lib/require-plugins/text.min.js
 lib/require.min.js
 lib/rxjs/rxjs.umd.min.js
 lib/immutable/immutable.min.js
+lib/json3/json3.min.js
 #FRAMEWORK LIBRARY FILES
 lib/system/etc/kernel.json
 lib/system/init.min.js
