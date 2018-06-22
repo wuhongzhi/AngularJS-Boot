@@ -4,7 +4,7 @@ define(['require', 'exports', 'application'], function(require, exports, applica
     angular.extend(exports, {
         name: module.name,
         module: function(resolved) {
-            require([application.$$cacheUrl('style!css/application/layout.css')], function() {
+            require([application.$$cacheUrl('style!modules/layout/layout.css')], function() {
                 resolved(module);
             });
         }

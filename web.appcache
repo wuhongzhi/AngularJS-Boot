@@ -6,7 +6,7 @@ CACHE:
 #/img/splash.png
 /img/splash-large.png
 #CSS FILES
-css/application/index.min.css
+css/index/index.min.css
 css/themes/material/angular-material.min.css
 css/themes/material/angular-material-icons.min.css
 #FONT FILES
