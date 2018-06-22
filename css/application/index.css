@@ -29,6 +29,33 @@ body {
     }
 }
 
+@-webkit-keyframes progress-move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+@-moz-keyframes progress-move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+@keyframes progress-move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
 .meter {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -57,20 +84,12 @@ body {
     -moz-border-radius: 20px 20px 20px 20px;
     border-radius: 20px 20px 20px 20px;
     background-color: rgb(43, 194, 83);
-    background-image: -webkit-gradient( linear,
-    left bottom,
-    left top,
-    color-stop(0, rgb(43, 194, 83)),
-    color-stop(1, rgb(84, 240, 84)));
-    background-image: -moz-linear-gradient( center bottom,
-    rgb(43, 194, 83) 37%,
-    rgb(84, 240, 84) 69%);
-    -webkit-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
-    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
-    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
-    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(43, 194, 83)),color-stop(1, rgb(84, 240, 84)));
+    background-image: -moz-linear-gradient(center bottom,rgb(43, 194, 83) 37%,rgb(84, 240, 84) 69%);
+    background-image: linear-gradient(center bottom,rgb(43, 194, 83) 37%,rgb(84, 240, 84) 69%);
+    -webkit-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),inset 0 -2px 6px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -83,24 +102,16 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
-    background-image: -webkit-gradient(linear, 0 0, 100% 100%,
-    color-stop(.25, rgba(255, 255, 255, .2)),
-    color-stop(.25, transparent), color-stop(.5, transparent),
-    color-stop(.5, rgba(255, 255, 255, .2)),
-    color-stop(.75, rgba(255, 255, 255, .2)),
-    color-stop(.75, transparent), to(transparent));
-    background-image: -moz-linear-gradient( -45deg,
-    rgba(255, 255, 255, .2) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, .2) 50%,
-    rgba(255, 255, 255, .2) 75%,
-    transparent 75%,
-    transparent);
     z-index: 1;
     -webkit-background-size: 50px 50px;
     -moz-background-size: 50px 50px;
-    -webkit-animation: move 2s linear infinite;
+    background-size: 50px 50px;
+    background-image: -webkit-gradient(linear, 0 0, 100% 100%,color-stop(.25, rgba(255, 255, 255, .2)),color-stop(.25, transparent), color-stop(.5, transparent),color-stop(.5, rgba(255, 255, 255, .2)),color-stop(.75, rgba(255, 255, 255, .2)),color-stop(.75, transparent), to(transparent));
+    background-image: -moz-linear-gradient( -45deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent);
+    background-image: linear-gradient( -45deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent);
+    -webkit-animation: progress-move 1s linear infinite;
+    -moz-animation: progress-move 1s linear infinite;
+    animation: progress-move 1s linear infinite;
     -webkit-border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
     border-radius: 20px 20px 20px 20px;
@@ -111,66 +122,66 @@ body {
     display: none;
 }
 
-@-webkit-keyframes move {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 50px 50px;
-    }
-}
 
 .red>span {
     background-color: #f0a3a3;
-    background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0a3a3), color-stop(1, #f42323));
     background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
+    background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
+    background-image: linear-gradient(top, #f0a3a3, #f42323);
 }
 
 .orange>span {
     background-color: #f1a165;
-    background-image: -moz-linear-gradient(top, #f1a165, #f36d0a);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f1a165), color-stop(1, #f36d0a));
     background-image: -webkit-linear-gradient(#f1a165, #f36d0a);
+    background-image: -moz-linear-gradient(top, #f1a165, #f36d0a);
+    background-image: linear-gradient(top, #f1a165, #f36d0a);
 }
 
 .yellow>span {
     background-color: #f0efa3;
-    background-image: -moz-linear-gradient(top, #f0efa3, #f7e302);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0efa3), color-stop(1, #f7e302));
-    background-image: -webkit-linear-gradient(#f0efa3, #f7e302)
+    background-image: -webkit-linear-gradient(#f0efa3, #f7e302);
+    background-image: -moz-linear-gradient(top, #f0efa3, #f7e302);
+    background-image: linear-gradient(top, #f0efa3, #f7e302);
 }
 
 .green>span {
     background-color: #a3f0a7;
-    background-image: -moz-linear-gradient(top, #a3f0a7, #02f717);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a3f0a7), color-stop(1, #02f717));
-    background-image: -webkit-linear-gradient(#a3f0a7, #02f717)
+    background-image: -webkit-linear-gradient(#a3f0a7, #02f717);
+    background-image: -moz-linear-gradient(top, #a3f0a7, #02f717);
+    background-image: linear-gradient(top, #a3f0a7, #02f717);
 }
 
 .cyan>span {
     background-color: #a3f0d5;
-    background-image: -moz-linear-gradient(top, #a3f0d5, #02f7c0);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #a3f0d5), color-stop(1, #02f7c0));
-    background-image: -webkit-linear-gradient(#a3f0d5, #02f7c0)
+    background-image: -webkit-linear-gradient(#a3f0d5, #02f7c0);
+    background-image: -moz-linear-gradient(top, #a3f0d5, #02f7c0);
+    background-image: linear-gradient(top, #a3f0d5, #02f7c0);
 }
 
 .blue>span {
     background-color: #7496ff;
-    background-image: -moz-linear-gradient(top, #7496ff, #041972);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #7496ff), color-stop(1, #041972));
-    background-image: -webkit-linear-gradient(#7496ff, #041972)
+    background-image: -webkit-linear-gradient(#7496ff, #041972);
+    background-image: -moz-linear-gradient(top, #7496ff, #041972);
+    background-image: linear-gradient(top, #7496ff, #041972);
 }
 
 .purple>span {
     background-color: #cda3f0;
-    background-image: -moz-linear-gradient(top, #cda3f0, #9b02f7);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #cda3f0), color-stop(1, #9b02f7));
-    background-image: -webkit-linear-gradient(#cda3f0, #9b02f7)
+    background-image: -webkit-linear-gradient(#cda3f0, #9b02f7);
+    background-image: -moz-linear-gradient(top, #cda3f0, #9b02f7);
+    background-image: linear-gradient(top, #cda3f0, #9b02f7);
 }
 
 .nostripes>span>span,
 .nostripes>span:after {
-    -webkit-animation: none;
     background-image: none;
+    -webkit-animation: none;
+    animation: none;
 }
