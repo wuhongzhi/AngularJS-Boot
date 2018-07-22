@@ -6,7 +6,7 @@ CACHE:
 #/img/splash.png
 /img/splash-large.png
 #CSS FILES
-css/index/index.min.css
+css/pi/pi.min.css
 css/themes/material/angular-material.min.css
 css/themes/material/angular-material-icons.min.css
 #FONT FILES
@@ -70,8 +70,8 @@ lib/system/modules/system.immutable.min.js
 #INDEX RESOURCES
 favicon.ico
 offline.min.js
-index.i18n.min.js
-index.min.js
+nls.min.js
+pi.min.js
 
 FALLBACK:
 version.js offline.min.js

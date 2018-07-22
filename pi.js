@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-define(['require', 'version', 'index.i18n.min', 'lib/modernizr/modernizr.min'], function(require, version, i18n) {
+define(['require', 'version', 'nls.min', 'lib/modernizr/modernizr.min'], function(require, version, i18n) {
     if (!version) {
         console.warn("System is running in offline mode!");
         return;
