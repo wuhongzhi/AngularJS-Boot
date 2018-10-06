@@ -8,6 +8,8 @@
             "angular-aria": "lib/angular.js/angular-aria",
             "angular-cookies": "lib/angular.js/angular-cookies",
             "angular-messages": "lib/angular.js/angular-messages",
+            "angular-message-format": "lib/angular.js/angular-message-format",
+            "angular-parse-ext": "lib/angular.js/angular-parse-ext",
             "angular-resource": "lib/angular.js/angular-resource",
             "angular-sanitize": "lib/angular.js/angular-sanitize"
         },
@@ -18,6 +20,8 @@
             "angular-aria": ["angular"],
             "angular-cookies": ["angular"],
             "angular-messages": ["angular"],
+            "angular-message-format": ["angular"],
+            "angular-parse-ext": ["angular"],
             "angular-resource": ["angular"],
             "angular-sanitize": ["angular"]
         }
