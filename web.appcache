@@ -20,7 +20,9 @@ lib/angular-material/angular-material.min.js
 lib/angular.js/angular-animate.min.js
 lib/angular.js/angular-aria.min.js
 lib/angular.js/angular-messages.min.js
+lib/angular.js/angular-message-format.min.js
 lib/angular.js/angular-resource.min.js
+lib/angular.js/angular-parse-ext.min.js
 lib/angular.js/angular-route.min.js
 lib/angular.js/angular-sanitize.min.js
 lib/angular.js/angular-touch.min.js
@@ -59,6 +61,7 @@ lib/system/modules/gui.language.min.js
 lib/system/modules/gui.qrcode.drawer.min.js
 lib/system/modules/gui.qrcode.min.js
 lib/system/modules/gui.theme.min.js
+lib/system/modules/system.security.min.js
 lib/system/modules/system.cache.min.js
 lib/system/modules/system.crypto.min.js
 lib/system/modules/system.device.min.js
