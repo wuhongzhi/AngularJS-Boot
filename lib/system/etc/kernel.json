@@ -15,7 +15,10 @@
         },
         "shim":
         {
-            "angular": ["jquery"],
+            "angular": {
+                "deps": ["jquery"],
+                "exports": "angular"
+            },
             "angular-animate": ["angular"],
             "angular-aria": ["angular"],
             "angular-cookies": ["angular"],
