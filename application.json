@@ -5,7 +5,7 @@
         "locale": "zh-cn",
         "locales": ["zh-cn", "en-us"],
         "theme": "material",
-        "services": "api/"
+        "services": "rest/"
     },
     "includes": [
         "modules/module.json"
