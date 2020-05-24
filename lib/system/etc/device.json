@@ -7,6 +7,7 @@
 			"lib/system/devices/device.network"
 		],
 		"desktop": [
+			"lib/system/devices/device.power",
 			"lib/system/devices/device.display",
 			"lib/system/devices/virtual/device.network"
 		],
